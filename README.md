@@ -1,7 +1,7 @@
 # 📌 Projeto SJCC — Fidelização Digital (Segundo Clique)
 
 ## 👥 Equipe
-- **Augusto Vasconcelos** — [GitHub](https://github.com/gutovenancio) · [LinkedIn](#)
+- **Augusto Vasconcelos**(dev) — [GitHub](https://github.com/gutovenancio) · [LinkedIn](#)
 - **Nome 2** — [GitHub](#)
 - **Nome 3** — [GitHub](#)
 - **Nome 4** — [GitHub](#)
@@ -31,7 +31,7 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 
 ## 📌 Backlog (ClickUp)
 
-Abaixo está o print do nosso quadro no ClickUp com as histórias de usuário, priorização e papéis da equipe:
+Abaixo está o print do nosso quadro no ClickUp com as histórias de usuário, priorização e a quem a função é destinada:
 
 ![Backlog no ClickUp](./backlog-clickup.png)
 
