@@ -29,13 +29,5 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 - ↑ **CTR** para conteúdo recomendado  
 - ↓ **Taxa de rejeição** nas páginas de matéria
 
-## 🧱 Tecnologias (preencher quando definir)
-- Frontend: …
-- Backend: …
-- Banco/serviços: …
 
-## ▶️ Como rodar (exemplo)
-```bash
-npm install
-npm run dev
 
