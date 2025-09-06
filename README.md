@@ -18,7 +18,7 @@ Uma solução para **aumentar a permanência e incentivar o “segundo clique”
 Após mudanças de algoritmo, houve **redução de relevância em busca**, **queda de audiência** e **menor recall de marca**. Nosso foco é recuperar retenção e engajamento.
 
 ### Proposta de Solução (versão 1 do MVP)
--escrever opções
+- Escrever estratégias
 
 ### Público-alvo
 Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes e têm potencial de consumir 2+ conteúdos/visita.
