@@ -35,6 +35,6 @@ As histórias de usuário definidas para o projeto estão disponíveis [neste do
 ## 📌 Backlog
 Abaixo, o print do quadro de backlog no ClickUp:  
 
-![Backlog ClickUp](./docs/backlog.png)
+![Backlog ClickUp](backlog.png)
 
 
