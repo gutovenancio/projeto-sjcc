@@ -30,7 +30,7 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 - ↓ **Taxa de rejeição** nas páginas de matéria
 
 ## 📝 Histórias de Usuário
-As histórias de usuário definidas para o projeto estão disponíveis [neste documento](./docs/user-stories.md).  
+As histórias de usuário definidas para o projeto estão disponíveis [neste documento](histórias-usuário.md).  
 
 
 
