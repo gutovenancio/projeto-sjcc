@@ -29,5 +29,11 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 - ↑ **CTR** para conteúdo recomendado  
 - ↓ **Taxa de rejeição** nas páginas de matéria
 
+## 📌 Backlog (ClickUp)
+
+Abaixo está o print do nosso quadro no ClickUp com as histórias de usuário, priorização e papéis da equipe:
+
+![Backlog no ClickUp](./backlog-clickup.png)
+
 
 
