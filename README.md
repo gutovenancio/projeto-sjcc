@@ -1,15 +1,15 @@
 # 📌 Projeto SJCC — Fidelização Digital (Segundo Clique)
 
 ## 👥 Equipe
-- **Victor Nadler (Product Owner)** — [GitHub](#)
--  **Nádia Bordoni (SM/Design)** — [GitHub](#)
-- **Augusto Venâncio (desenvolvedor)** — [GitHub](https://github.com/gutovenancio) · [LinkedIn](#)
-- **Clara Albuquerque (Devenvolvedora)** — [GitHub](#)
-- **Caio Marques (Desenvolvedor)** — [GitHub](#)
-- **Júlio Sales (Desenvolvedor)** — [GitHub](#)
-- **Danilo de Melo (Desenvolvedor)** — [GitHub](#)
-- **Júlia Camara (Design)** — [GitHub](#)
-- **Malu Muniz (Design)** — [GitHub](#)
+- **Victor Nadler (Product Owner)** — [GitHub](#) · [LinkedIn](#)
+-  **Nádia Bordoni (SM/Design)** — [GitHub](#) · [LinkedIn](#)
+- **Augusto Venâncio (desenvolvedor)** — [GitHub](https://github.com/gutovenancio)
+- **Clara Albuquerque (Devenvolvedora)** — [GitHub](#) · [LinkedIn](#)
+- **Caio Marques (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
+- **Júlio Sales (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
+- **Danilo de Melo (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
+- **Júlia Camara (Design)** — [GitHub](#) · [LinkedIn](#)
+- **Malu Muniz (Design)** — [GitHub](#) · [LinkedIn](#)
 
 ## 📰 Produto (o que estamos construindo)
 Uma solução para **aumentar a permanência e incentivar o “segundo clique”** nas páginas de notícia do SJCC, melhorando a experiência na página de matéria e sugerindo conteúdos relevantes de forma inteligente.
