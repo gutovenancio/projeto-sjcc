@@ -3,9 +3,7 @@
 Este documento contém as histórias de usuário do projeto **SJCC**, desenvolvidas com base nos 3Cs: **Cartão, Conversa e Confirmação**.
 
 ## História 1
-**Como** leitor do portal,  
-**quero** receber sugestões de matérias relacionadas logo abaixo do texto principal,  
-**para** continuar navegando sem precisar voltar à página inicial.  
+**Como** leitor do portal,  **quero** receber sugestões de matérias relacionadas logo abaixo do texto principal,  **para** continuar navegando sem precisar voltar à página inicial.  
 
 ---
 
