@@ -2,9 +2,9 @@
 
 ## 👥 Equipe
 - **Victor Nadler (Product Owner)** — [GitHub](#) · [LinkedIn](#)
--  **Nádia Bordoni (SM/Design)** — [GitHub](#) · [LinkedIn](#)
-- **Augusto Venâncio (Desenvolvedor)** — [GitHub](https://github.com/gutovenancio)
+- **Nádia Bordoni (SM/Design)** — [GitHub](#) · [LinkedIn](#)
 - **Clara Albuquerque (Devenvolvedora)** — [GitHub](#) · [LinkedIn](#)
+- **Augusto Venâncio (Desenvolvedor)** — [GitHub](https://github.com/gutovenancio)
 - **Caio Marques (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
 - **Júlio Sales (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
 - **Danilo de Melo (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
