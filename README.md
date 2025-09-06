@@ -1,15 +1,15 @@
 # 📌 Projeto SJCC — Fidelização Digital (Segundo Clique)
 
 ## 👥 Equipe
-- **Augusto Vasconcelos**(dev) — [GitHub](https://github.com/gutovenancio) · [LinkedIn](#)
-- **Nome 2** — [GitHub](#)
-- **Nome 3** — [GitHub](#)
-- **Nome 4** — [GitHub](#)
-- **Nome 5** — [GitHub](#)
-- **Nome 6** — [GitHub](#)
-- **Nome 7** — [GitHub](#)
-- **Nome 8** — [GitHub](#)
-- **Nome 9** — [GitHub](#)
+- **Victor Nadler (Product Owner)** — [GitHub](#)
+-  **Nádia Bordoni (SM/Design)** — [GitHub](#)
+- **Augusto Venâncio (desenvolvedor)** — [GitHub](https://github.com/gutovenancio) · [LinkedIn](#)
+- **Clara Albuquerque (Devenvolvedora)** — [GitHub](#)
+- **Caio Marques (Desenvolvedor)** — [GitHub](#)
+- **Júlio Sales (Desenvolvedor)** — [GitHub](#)
+- **Danilo de Melo (Desenvolvedor)** — [GitHub](#)
+- **Júlia Camara (Design)** — [GitHub](#)
+- **Malu Muniz (Design)** — [GitHub](#)
 
 ## 📰 Produto (o que estamos construindo)
 Uma solução para **aumentar a permanência e incentivar o “segundo clique”** nas páginas de notícia do SJCC, melhorando a experiência na página de matéria e sugerindo conteúdos relevantes de forma inteligente.
