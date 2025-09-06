@@ -32,5 +32,9 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 ## 📝 Histórias de Usuário
 As histórias de usuário definidas para o projeto estão disponíveis [neste documento](histórias-usuário.md).  
 
+## 📌 Backlog
+Abaixo, o print do quadro de backlog no ClickUp:  
+
+![Backlog ClickUp](./docs/backlog.png)
 
 
