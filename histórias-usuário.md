@@ -10,20 +10,14 @@ Este documento contém as histórias de usuário do projeto **SJCC**, desenvolvi
 ---
 
 ## História 2
-**Como** usuário que acessa pelo celular,  
-**quero** visualizar uma página leve e rápida,  
-**para** não abandonar a leitura antes do próximo clique.  
+**Como** usuário que acessa pelo celular,  **quero** visualizar uma página leve e rápida,  **para** não abandonar a leitura antes do próximo clique.  
 
 ---
 
 ## História 3
-**Como** visitante novo no site,  
-**quero** encontrar conteúdos em destaque com títulos chamativos,  
-**para** me engajar logo no primeiro acesso.  
+**Como** visitante novo no site,  **quero** encontrar conteúdos em destaque com títulos chamativos,  **para** me engajar logo no primeiro acesso.  
 
 ---
 
 ## História 4
-**Como** leitor que gosta de interagir,  
-**quero** ver enquetes ou comentários em tempo real ao final das matérias,  
-**para** participar ativamente e aumentar meu tempo de permanência.  
+**Como** leitor que gosta de interagir,  **quero** ver enquetes ou comentários em tempo real ao final das matérias,  **para** participar ativamente e aumentar meu tempo de permanência.  
