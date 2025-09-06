@@ -3,7 +3,7 @@
 ## 👥 Equipe
 - **Victor Nadler (Product Owner)** — [GitHub](#) · [LinkedIn](#)
 -  **Nádia Bordoni (SM/Design)** — [GitHub](#) · [LinkedIn](#)
-- **Augusto Venâncio (desenvolvedor)** — [GitHub](https://github.com/gutovenancio)
+- **Augusto Venâncio (Desenvolvedor)** — [GitHub](https://github.com/gutovenancio)
 - **Clara Albuquerque (Devenvolvedora)** — [GitHub](#) · [LinkedIn](#)
 - **Caio Marques (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
 - **Júlio Sales (Desenvolvedor)** — [GitHub](#) · [LinkedIn](#)
