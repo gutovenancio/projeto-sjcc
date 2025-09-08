@@ -32,10 +32,10 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 
 ## 📌 Backlog e Organização
 
-Todas as entregas do time estão organizadas em quadros do FigJam, separados por entregas e acompanhados de um cronograma.  
+Todas as entregas do time são feitas em quadros do FigJam, separados por entregas e acompanhados de um cronograma, e também no ClickUp, onde organizamos o prazo das entregas, a prioridade e os responsáveis por cada atividade.
 
-- [Quadro Geral de Histórias de Usuário no FigJam](LINK_AQUI)  
-- [Cronograma de Entregas no FigJam](LINK_AQUI)  
+- [Quadro Geral de Histórias de Usuário no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3696&p=f&t=8X4nOILNXaKc3dhj-0) 
+- [Cronograma de Entregas no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=30-113&p=f&t=8X4nOILNXaKc3dhj-0) 
 
 Como evidência, abaixo segue um print representativo do quadro no ClickUp, mostrando a organização das tarefas dentro da Sprint:  
 
