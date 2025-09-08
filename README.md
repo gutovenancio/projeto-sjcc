@@ -29,8 +29,6 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 - ↑ **CTR** para conteúdo recomendado  
 - ↓ **Taxa de rejeição** nas páginas de matéria
 
-## 📝 Histórias de Usuário
-As histórias de usuário definidas para o projeto estão disponíveis [neste documento](histórias-usuário.md).  
 
 ## 📌 Backlog
 Abaixo, o print do quadro de backlog no ClickUp:  
