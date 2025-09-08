@@ -30,9 +30,16 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 - ↓ **Taxa de rejeição** nas páginas de matéria
 
 
-## 📌 Backlog
-Abaixo, o print do quadro de backlog no ClickUp:  
+## 📌 Backlog e Organização
 
-![Backlog ClickUp](backlog.png)
+Todas as entregas do time estão organizadas em quadros do FigJam, separados por entregas e acompanhados de um cronograma.  
+
+- [Quadro Geral de Histórias de Usuário no FigJam](LINK_AQUI)  
+- [Cronograma de Entregas no FigJam](LINK_AQUI)  
+
+Como evidência, abaixo segue um print representativo do quadro no ClickUp, mostrando a organização das tarefas dentro da Sprint:  
+
+![Backlog ClickUp](./docs/backlog.png)
+
 
 
