@@ -14,15 +14,15 @@
 ## 📰 Produto (o que estamos construindo)
 Uma solução para **aumentar a permanência e incentivar o “segundo clique”** nas páginas de notícia do SJCC, melhorando a experiência na página de matéria e sugerindo conteúdos relevantes de forma inteligente.
 
-### Problema
+## 🔎 Problema
 Após mudanças de algoritmo, houve **redução de relevância em busca**, **queda de audiência** e **menor recall de marca**. Nosso foco é recuperar retenção e engajamento.
 
 
-### Público-alvo
+## 🎯 Público-alvo
 Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes e têm potencial de consumir 2+ conteúdos/visita.
 
 
-### Métricas de Sucesso
+## 📊 Métricas de Sucesso
 - ↑ **Páginas por sessão**  
 - ↑ **Tempo na página / sessão**  
 - ↑ **CTR** para conteúdo recomendado  
