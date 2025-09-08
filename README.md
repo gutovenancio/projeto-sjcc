@@ -39,7 +39,7 @@ Todas as entregas do time estão organizadas em quadros do FigJam, separados por
 
 Como evidência, abaixo segue um print representativo do quadro no ClickUp, mostrando a organização das tarefas dentro da Sprint:  
 
-![Backlog ClickUp](./docs/backlog.png)
+![Backlog ClickUp](backlog.png)
 
 
 
