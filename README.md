@@ -66,9 +66,10 @@ Aqui nos produzimos 10 histórias de usuário por meio de Storyboards, cada quad
 ![História 5,6 e 7](./print/Histórias%205%2C6%20e%207.jpeg)
 ![História 8,9 e 10](./print/Histórias%208%2C9%20e%2010.jpeg)
 
-### Screencast
+## 🎥 Screencast do Protótipo
 
-![screencast](./prints/screencast-protipacao-lo-fi-dcqr9euvmp4_KGlfWkrq.mp4)
+[▶️ Clique aqui para assistir ao vídeo](./prints/screencast-protipacao-lo-fi-dcqr9euvmp4_KGlfWkrq.mp4)
+
 
 
 ## ⚙️ Issues / Bug Tracker
