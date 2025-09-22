@@ -50,6 +50,13 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 ![Diagrama de atividades](./prints/diagrama.png)
 
 
+
+## ✏️ Prototipação Lo-Fi
+
+Fizemos nossa prototipação lo-fi por meio do Figma, traduzindo bem nossa ideia para algo mais simples e fácil de assimilar
+- [Protopação Lo-Fi](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3699&p=f&t=5smKvGZQzuXuZdXC-0)
+
+![Prototipação Lo-Fi]
   
 ## ⚙️ Issues / Bug Tracker
 
