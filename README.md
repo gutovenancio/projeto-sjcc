@@ -61,7 +61,7 @@ Fizemos nossa prototipação lo-fi por meio do Figma, traduzindo bem nossa ideia
 ### Sketchs e Storyboards
 
 Aqui nos produzimos 10 histórias de usuário por meio de Storyboards, cada quadrado se refera a uma tela que o usuário passa e interage
-![História 1](./print/História%201.jpeg)
+![História 1](./print/História 1.jpeg)
 ![História 2](./print/História%202.jpeg)
 ![Histórias 3 e 4](./print/História%203%20e%204.jpeg)
 ![História 5,6 e 7](./print/Histórias%205%2C6%20e%207.jpeg)
