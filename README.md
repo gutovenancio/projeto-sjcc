@@ -45,6 +45,7 @@ Como evidência, abaixo segue um print representativo do quadro no ClickUp, most
 
 O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
 Ele foi elaborado para demonstrar de forma visual como as ações do usuário se conectam às respostas do sistema, servindo como base para a prototipação e desenvolvimento.
+- [Diagrama de atividades]([https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3696&p=f&t=8X4nOILNXaKc3dhj-0](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=MPGOHOK1pskjaefL-0)) 
 
 ![Diagrama de atividades](./prints/diagrama.png)
 
