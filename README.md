@@ -57,7 +57,17 @@ Fizemos nossa prototipação lo-fi por meio do Figma, traduzindo bem nossa ideia
 - [Protopação Lo-Fi](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3699&p=f&t=5smKvGZQzuXuZdXC-0)
 
 ![Prototipação Lo-Fi]
-  
+
+### Sketchs e Storyboards
+
+Aqui nos produzimos 10 histórias de usuário por meio de Storyboards, cada quadrado se refera a uma tela que o usuário passa e interage
+![História 1]((./print/História 1.jpeg)
+![História 2]((./print/História 2.jpeg)
+![Histórias 3 e 4]((./print/História 3 e 4.jpeg)
+![História 5,6 e 7]((./print/Histórias 5,6 e 7.jpeg)
+![História 8,9 e 10]((./print/História 8,9 e 10.jpeg)
+
+
 ## ⚙️ Issues / Bug Tracker
 
 Acompanhamento via GitHub Issues.
