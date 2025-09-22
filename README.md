@@ -44,6 +44,13 @@ Como evidência, abaixo segue um print representativo do quadro no ClickUp, most
 ## 🗺️ Diagrama de atividades 
 - [Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=Ilz3GAwMgzoJPCUv-0)
 
+  
+## ✅ Issues / Bug Tracker
+
+Acompanhamento via GitHub Issues.
+
+### Issues concluídas
+![Issues fechadas](./prints/issues-closed.png)
 
 ## ⚙️ Issues e bug tracker
 - [Issues/bug tracker](https://github.com/gutovenancio/projeto-sjcc/issues)
