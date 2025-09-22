@@ -60,3 +60,14 @@ Acompanhamento via GitHub Issues.
 
 
 
+## 🗂️ Quadro da Sprint e Backlog
+
+Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenciando as histórias de usuário e bugs planejados, em andamento e já concluídos.
+
+### Quadro da Sprint
+![Sprint Board](./prints/sprint-board.png)
+
+### Backlog
+![Backlog](./prints/backlog-atualizado.png)
+
+
