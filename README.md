@@ -68,6 +68,6 @@ Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenci
 ![Sprint Board](./prints/sprint-board.png)
 
 ### Backlog
-![Backlog](./prints/backlog-atualizado.png)
+![Backlog(atualizado)](./prints/backlog-atualizado.png)
 
 
