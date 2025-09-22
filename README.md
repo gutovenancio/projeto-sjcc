@@ -78,8 +78,8 @@ Histórias 8, 9 e 10
 
 ## 🎥 Screencast do Protótipo
 
-[▶️ Clique aqui para assistir ao vídeo](./prints/screencast-protipacao-lo-fi-dcqr9euvmp4_KGlfWkrq.mp4)
 
+[![Assista ao vídeo no YouTube](https://img.youtube.com/vi/ABC123xyz/hqdefault.jpg)]([https://youtu.be/ABC123xyz](https://youtu.be/CzqWoUHvWYg))
 
 
 ## ⚙️ Issues / Bug Tracker
