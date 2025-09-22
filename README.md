@@ -41,8 +41,13 @@ Como evidência, abaixo segue um print representativo do quadro no ClickUp, most
 ![Backlog ClickUp](./prints/backlog.png)
 
 
-## 🗺️ Diagrama de atividades 
-- [Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=Ilz3GAwMgzoJPCUv-0)
+## 📊 Diagrama de Atividades
+
+O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
+Ele foi elaborado para demonstrar de forma visual como as ações do usuário se conectam às respostas do sistema, servindo como base para a prototipação e desenvolvimento.
+
+![Diagrama de atividades](./prints/diagrama-atividades.png)
+
 
   
 ## ⚙️ Issues / Bug Tracker
