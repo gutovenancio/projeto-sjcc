@@ -79,7 +79,7 @@ Histórias 8, 9 e 10
 ## 🎥 Screencast do Protótipo
 
 
-[![Assista ao vídeo no YouTube]([https://youtu.be/ABC123xyz](https://youtu.be/CzqWoUHvWYg))
+[![Assista ao vídeo no YouTube](https://youtu.be/CzqWoUHvWYg)
 
 
 ## ⚙️ Issues / Bug Tracker
