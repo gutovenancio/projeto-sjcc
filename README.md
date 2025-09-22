@@ -78,8 +78,10 @@ Histórias 8, 9 e 10
 
 ## 🎥 Screencast do Protótipo
 
+O vídeo abaixo apresenta o fluxo principal do protótipo Lo-Fi desenvolvido para o SJCC, destacando o objetivo de incentivar o **segundo clique** no portal.
 
-[![Assista ao vídeo no YouTube](https://youtu.be/CzqWoUHvWYg)
+[![Assista ao vídeo no YouTube](https://img.youtube.com/vi/CzqWoUHvWYg/hqdefault.jpg)](https://www.youtube.com/watch?v=CzqWoUHvWYg)
+
 
 
 ## ⚙️ Issues / Bug Tracker
