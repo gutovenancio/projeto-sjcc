@@ -1,12 +1,17 @@
 // index.js
 
+// --- 1. IMPORTAÇÕES (Todas juntas no topo) ---
 const express = require('express');
+const cors = require('cors'); // Corrigido: importando o pacote 'cors'
 const { Sequelize, DataTypes } = require('sequelize');
 const { formatInTimeZone, toZonedTime } = require('date-fns-tz');
 const { subDays, format } = require('date-fns');
-const app = express();
+// --- 2. CONFIGURAÇÃO DO APP (Logo após as importações) ---
+const app = express(); // Declarado apenas UMA VEZ
+app.use(cors());
 app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
 
+// --- 3. CONEXÃO COM O BANCO DE DADOS ---
 // Conecta ao banco de dados SQLite. O arquivo 'streak.db' será criado.
 const sequelize = new Sequelize({
   dialect: 'sqlite',
