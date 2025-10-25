@@ -1,0 +1,17 @@
+# Diretórios de dependências de qualquer subprojeto
+node_modules/
+
+# Bancos de dados de desenvolvimento de qualquer subprojeto
+*.db
+*.sqlite
+
+# Arquivos de log
+*.log
+npm-debug.log*
+
+# Arquivos de ambiente (importante para o futuro)
+.env
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
