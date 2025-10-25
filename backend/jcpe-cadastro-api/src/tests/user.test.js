@@ -1,44 +1,52 @@
-const request = require('supertest');
-const app = require('../server'); 
-const { PrismaClient } = require('@prisma/client');
+const Usuario = require('../models/Usuario');
 
-const prisma = new PrismaClient();
+describe('Modelo Usuario', () => {
+  describe('Criação de usuário', () => {
+    it('deve criar uma instância de usuário com dados válidos', async () => {
+      const usuario = await Usuario.criar('João Silva', 'joao@email.com', 'senha123');
+      
+      expect(usuario.nome).toBe('João Silva');
+      expect(usuario.email).toBe('joao@email.com');
+      expect(usuario.senhaHash).toBeDefined();
+      expect(usuario.id).toBeNull(); // Ainda não tem ID
+      expect(usuario.criadoEm).toBeInstanceOf(Date);
+    });
 
-beforeAll(async () => {
-  await prisma.usuario.deleteMany();
-});
+    it('deve lançar erro quando email é inválido', async () => {
+      await expect(Usuario.criar('João', 'email-invalido', 'senha123'))
+        .rejects
+        .toThrow('Email inválido.');
+    });
 
-afterAll(async () => {
-  await prisma.$disconnect();
-});
+    it('deve lançar erro quando senha é muito curta', async () => {
+      await expect(Usuario.criar('João', 'joao@email.com', '123'))
+        .rejects
+        .toThrow('Senha deve ter pelo menos 6 caracteres.');
+    });
 
-describe('Testes de Cadastro de Usuário', () => {
-  it('Deve cadastrar um novo usuário com sucesso', async () => {
-    const novoUsuario = {
-      nome: 'Caio',
-      email: 'caio@example.com',
-      senha: '12345678'
-    };
-
-    const response = await request(app)
-      .post('/api/cadastro')
-      .send(novoUsuario)
-      .expect('Content-Type', /json/)
-      .expect(201);
-
-    expect(response.body.usuario).toHaveProperty('id');
-    expect(response.body.usuario.nome).toBe('Caio');
-    expect(response.body.usuario.email).toBe('caio@example.com');
+    it('deve verificar senha corretamente', async () => {
+      const usuario = await Usuario.criar('Maria', 'maria@email.com', 'minhasenha');
+      const senhaCorreta = await usuario.verificarSenha('minhasenha');
+      const senhaIncorreta = await usuario.verificarSenha('senhaerrada');
+      
+      expect(senhaCorreta).toBe(true);
+      expect(senhaIncorreta).toBe(false);
+    });
   });
 
-  it('Deve retornar erro se faltar campos obrigatórios', async () => {
-    const usuarioInvalido = { nome: 'Caio' }; 
+  describe('Alteração de dados', () => {
+    it('deve alterar o nome corretamente', async () => {
+      const usuario = await Usuario.criar('Pedro', 'pedro@email.com', 'senha123');
+      usuario.alterarNome('Pedro Santos');
+      
+      expect(usuario.nome).toBe('Pedro Santos');
+    });
 
-    const response = await request(app)
-      .post('/api/cadastro')
-      .send(usuarioInvalido)
-      .expect(400);
-
-    expect(response.body.error).toBe('Nome, email e senha são obrigatórios.');
+    it('deve lançar erro ao tentar alterar para nome vazio', () => {
+      const usuario = new Usuario(1, 'caio', 'caio@email.com', 'hash', new Date());
+      
+      expect(() => usuario.alterarNome(''))
+        .toThrow('Nome não pode ser vazio.');
+    });
   });
 });
