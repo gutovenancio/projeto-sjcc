@@ -9,7 +9,7 @@
 - **Júlio Sales (Desenvolvedor)** 
 - **Danilo de Melo (Desenvolvedor)** 
 - **Júlia Camara (Design)** 
-- **Malu Muniz (Design)** 
+- **Maria Luísa Muniz (Design)** 
 
 ## 📰 Produto (o que estamos construindo)
 Uma solução para **aumentar a permanência e incentivar o “segundo clique”** nas páginas de notícia do SJCC, melhorando a experiência na página de matéria e sugerindo conteúdos relevantes de forma inteligente.
