@@ -103,9 +103,11 @@ O vídeo abaixo apresenta o fluxo principal do protótipo Lo-Fi desenvolvido par
 
 [![Assista ao vídeo no YouTube](https://img.youtube.com/vi/CzqWoUHvWYg/hqdefault.jpg)](https://www.youtube.com/watch?v=CzqWoUHvWYg)
 
-## 🎥 [QA} Teste de Sistema
+## 🎥 [QA] Teste de Sistema
 
 O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no figma e a tela de perfil implementada no front.
+[![Assista ao vídeo no YouTube]](https://youtu.be/OIJaiMSNTZA)
+
 
 
 ## 🗂️ Quadro da Sprint e Backlog
