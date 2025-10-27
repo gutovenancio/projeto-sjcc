@@ -78,8 +78,6 @@ As issues representam histórias de usuário, bugs e tarefas de documentação, 
 <img width="1892" height="886" alt="Captura de tela 2025-10-27 004246" src="https://github.com/user-attachments/assets/f8ec5cba-2aba-4f93-b867-24e471dd17dc" />
 O print acima evidencia o uso de labels (história, bug, documentação, design, organização), diferentes status e milestones correspondentes às sprints do projeto.
 
-
-
 ## 📊 Diagrama de Atividades
 
 O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
@@ -133,4 +131,27 @@ O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no fi
 
 [![Assista ao Teste de Sistema]](https://youtu.be/OIJaiMSNTZA)
 
+## 🤝 Pair Programming
+Durante o desenvolvimento das features, realizamos diversas sessões de pair programming entre integrantes das áreas de frontend e backend, com o objetivo de melhorar a integração entre as partes do sistema e garantir uma entrega mais fluida.
 
+As duplas se formavam conforme a complexidade da tarefa — por exemplo, frontend + backend para conectar rotas e componentes, ou design + frontend para validar fluxos e microinterações. Essas sessões ocorreram principalmente durante as sprints 8 a 10, com foco na sincronização entre o protótipo do Figma e a implementação no código.
+
+Cada sessão seguiu o formato:
+
+🧭 Definição da tarefa conjunta;
+
+💻 Codificação colaborativa em tempo real;
+
+🔍 Validação imediata de lógica, estilo e comportamento da interface;
+
+Essa prática resultou em:
+
+Maior padronização de código e melhor comunicação entre áreas;
+
+Redução de bugs de integração;
+
+Melhor entendimento coletivo da arquitetura do sistema;
+
+Entregas mais consistentes e alinhadas ao protótipo Lo-Fi.
+
+> O pair programming foi essencial para fortalecer o trabalho em equipe e aprimorar o aprendizado mútuo dentro do time, especialmente entre os papéis técnicos e de design.
