@@ -1,40 +1,65 @@
 # 📌 Projeto SJCC — Fidelização Digital (Segundo Clique)
 
 ## 👥 Equipe
-- **Victor Nadler (Product Owner)** 
-- **Nádia Bordoni (SM/Design)** 
-- **Clara Albuquerque (Devenvolvedora)** 
-- **Augusto Venâncio (Desenvolvedor)** 
-- **Caio Marques (Desenvolvedor)**
-- **Júlio Sales (Desenvolvedor)** 
-- **Danilo de Melo (Desenvolvedor)** 
-- **Júlia Camara (Design)** 
-- **Maria Luísa Muniz (Design)** 
+- **Nádia Bordoni (PO/Designer)** 
+- **Victor Nadler (SM Designer)** 
+- **Clara Albuquerque (Devenvolvedora Backend)** 
+- **Augusto Venâncio (Desenvolvedor Frontend)** 
+- **Caio Marques (Desenvolvedor Backend)**
+- **Júlio Sales (Desenvolvedor Frontend)** 
+- **Danilo de Melo (Desenvolvedor Backend)** 
+- **Júlia Camara (Designer)** 
+- **Maria Luísa Muniz (Designer)** 
 
-## 📰 Produto (o que estamos construindo)
-Uma solução para **aumentar a permanência e incentivar o “segundo clique”** nas páginas de notícia do SJCC, melhorando a experiência na página de matéria e sugerindo conteúdos relevantes de forma inteligente.
+## 📰 Sobre o Produto
+O projeto tem como objetivo **aumentar a permanência** e **incentivar o “segundo clique”** nas páginas de notícia do Sistema Jornal do Commercio de Comunicação (SJCC), promovendo uma experiência mais interativa e personalizada para o leitor.
 
 ## 🔎 Problema
-Após mudanças de algoritmo, houve **redução de relevância em busca**, **queda de audiência** e **menor recall de marca**. Nosso foco é recuperar retenção e engajamento.
+Após atualizações nos algoritmos de busca, o SJCC enfrentou:
+
+- 📉 Redução de relevância nos resultados de pesquisa
+
+- 👁️ Queda na audiência e no recall de marca
+
+- 🕓 Menor tempo médio de leitura
+
+**Nosso desafio é reverter essa tendência, ampliando engajamento e retenção de leitores.**
 
 
 ## 🎯 Público-alvo
-Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes e têm potencial de consumir 2+ conteúdos/visita.
+Leitores ocasionais e recorrentes dos portais do SJCC, com **foco em usuários que chegam por busca ou redes sociais** e têm **potencial para consumir mais de um** conteúdo por visita.
 
 
 ## 📊 Métricas de Sucesso
-- ↑ **Páginas por sessão**  
-- ↑ **Tempo na página / sessão**  
-- ↑ **CTR** para conteúdo recomendado  
-- ↓ **Taxa de rejeição** nas páginas de matéria
+- **Aumento do tempo médio de permanência na página**  
+- **Crescimento da taxa de segundo clique**  
+- **Número de streaks completas por usuário** 
+- **Engajamento nas indicações**
 
 
 ## 📌 Backlog e Organização
 
-Todas as entregas do time são feitas em quadros do FigJam, separados por entregas e acompanhados de um cronograma, e também no ClickUp, onde organizamos o prazo das entregas, a prioridade e os responsáveis por cada atividade.
+A organização do projeto seguiu/segue uma evolução estruturada ao longo das entregas:
+1- Planejamento inicial: começamos com a criação do cronograma e das histórias de usuário no FigJam, onde mapeamos os fluxos, priorizamos funcionalidades e definimos a visão geral do produto.
+2- Transição para o ClickUp: em seguida, migramos o backlog para o ClickUp, criando uma estrutura mais robusta de acompanhamento e priorização.
+3- Estrutura das Sprints: cada sprint tem duração de uma semana, e todas são criadas, nomeadas e acompanhadas diretamente no ClickUp, com tarefas atribuídas, labels, responsáveis e status de progresso.
+
+> Essa organização garante rastreabilidade entre o planejamento (FigJam) e a execução (ClickUp), além de facilitar a revisão das entregas e o acompanhamento contínuo do avanço do time.
 
 - [Quadro Geral de Histórias de Usuário no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3696&p=f&t=8X4nOILNXaKc3dhj-0) 
 - [Cronograma de Entregas no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=30-113&p=f&t=8X4nOILNXaKc3dhj-0)
+- [Plataforma de gerenciamento das sprints no ClickUp](https://app.clickup.com/90132250954/v/s/90139587137)
+
+  ## 🗂️ Quadro da Sprint e Backlog
+
+Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenciando as histórias de usuário e bugs planejados, em andamento e já concluídos.
+
+### Quadro da Sprint
+
+![Uploading Screenshot 2025-10-27 at 14.09.53.png…]()
+
+### Backlog
+![Uploading Screenshot 2025-10-27 at 14.10.54.png…]()
 
 
 ## ⚙️ O Issue/Bug Tracker foi atualizado para refletir a realidade atual do projeto.
@@ -60,7 +85,8 @@ O print acima evidencia o uso de labels (história, bug, documentação, design,
 
 O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
 Ele foi elaborado para demonstrar de forma visual como as ações do usuário se conectam às respostas do sistema, servindo como base para a prototipação e desenvolvimento.
-- [Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=MPGOHOK1pskjaefL-0)
+
+[Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=MPGOHOK1pskjaefL-0)
 
 ![Diagrama de atividades](./prints/diagrama.png)
 
@@ -103,23 +129,11 @@ O vídeo abaixo apresenta o fluxo principal do protótipo Lo-Fi desenvolvido par
 
 [![Assista ao vídeo no YouTube](https://img.youtube.com/vi/CzqWoUHvWYg/hqdefault.jpg)](https://www.youtube.com/watch?v=CzqWoUHvWYg)
 
-## 🎥 [QA] Teste de Sistema
+
+## 🎥 ScreenCast do Desenvolvimento
 
 O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no figma e a tela de perfil implementada no front.
 
 [![Assista ao Teste de Sistema]](https://youtu.be/OIJaiMSNTZA)
-
-
-
-## 🗂️ Quadro da Sprint e Backlog
-
-Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenciando as histórias de usuário e bugs planejados, em andamento e já concluídos.
-
-### Quadro da Sprint
-![Sprint Board](./prints/sprint-board.png)
-
-### Backlog
-![Backlog(atualizado)](./prints/backlog-atualizado.png)
-
 
 
