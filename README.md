@@ -107,7 +107,7 @@ O vídeo abaixo apresenta o fluxo principal do protótipo Lo-Fi desenvolvido par
 
 O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no figma e a tela de perfil implementada no front.
 
-[Ver: Teste de Sistema](https://youtu.be/OIJaiMSNTZA?si=tjf5-LWPA12gzdDa)]
+[Ver: Teste de Sistema (https://youtu.be/OIJaiMSNTZA?si=tjf5-LWPA12gzdDa)]
 
 
 ## 🗂️ Quadro da Sprint e Backlog
