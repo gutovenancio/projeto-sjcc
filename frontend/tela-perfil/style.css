@@ -1,0 +1,167 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { font-size: clamp(14px, 1.1vw, 16px); }
+body { background:#f5f5f5; color:#222; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Arial; }
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
+
+
+.top-row{
+  display:grid; gap:16px; margin-top:0;
+  grid-template-columns: 1fr; /* mobile */
+  grid-template-areas:
+    "left"
+    "right";
+  align-items:start;
+}
+.top-left  { grid-area:left;  display:grid; gap:12px; }
+.user-panel{ grid-area:right; align-self:start; }
+
+
+@media (min-width: 1024px){
+  .top-row{
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "left right";
+  }
+}
+
+
+.top-grid{
+  display:grid; gap:12px; grid-template-columns: 1fr;
+}
+@media (min-width: 900px){
+  .top-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+.mini-stat{
+  background:#fff; border-radius:14px; padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  text-align:center; display:grid; gap:6px;
+}
+.mini-icon{ font-size:20px }
+.mini-value{ font-weight:800; font-size:1.6rem }
+.mini-label{ font-size:.85rem; color:#666 }
+
+
+.level-card{
+  background:#fff; border-radius:14px; padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  display:grid; gap:12px;
+}
+.level-header{ display:flex; justify-content:space-between; align-items:center }
+#levelLabel{ font-weight:700; color:#333 }
+.points-strong{ color:#b00000; font-size:1.4rem; font-weight:800 }
+
+.level-progress{ display:grid; gap:8px }
+.level-bar-bg{
+  height:10px; background:#eee; border-radius:999px; overflow:hidden;
+}
+.level-bar-fill{
+  height:100%; background:#e01e1e; width:0; transition:width .4s ease;
+}
+.level-legend{
+  display:flex; justify-content:space-between; font-size:.85rem; color:#666;
+}
+
+
+.history-btn-wrapper{ text-align:center; }
+.history-btn{
+  background:#fff; color:#b00000; border:1px solid #b00000;
+  border-radius:999px; padding:8px 16px; font-weight:700; cursor:pointer;
+  transition:all .2s ease; box-shadow:0 2px 5px rgba(0,0,0,.05);
+}
+.history-btn:hover{ background:#b00000; color:#fff; }
+
+
+.user-panel{
+  display:flex; gap:12px; align-items:center;
+  background:#fff; border-radius:14px; padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.user-avatar{ width:64px; height:64px; border-radius:50%; object-fit:cover; }
+.user-info{ display:grid; gap:4px }
+.user-name{ font-size:1.05rem }
+.user-email{ font-size:.9rem; color:#777 }
+.user-prefs{ display:flex; gap:6px; flex-wrap:wrap; }
+.user-prefs span{
+  background:#ffe8e8; color:#b00000; padding:4px 8px; border-radius:999px; font-size:.75rem;
+}
+
+
+.content-grid{
+  display:grid; gap:16px; margin-top:16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px){
+  .content-grid{ grid-template-columns: 1.2fr .8fr; }
+}
+.panel{
+  background:#fff; border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.panel-header{
+  background:#e01e1e; color:#fff; font-weight:800;
+  padding:12px 16px; letter-spacing:.2px;
+}
+
+.rewards-list{ list-style:none; display:grid; gap:10px; padding:12px 12px 6px }
+.reward{
+  display:grid; grid-template-columns:1fr auto; align-items:center;
+  gap:10px; padding:10px 8px; border:1px solid #f0f0f0; border-radius:10px; background:#fff;
+}
+.reward-info{ display:flex; gap:10px; align-items:center }
+.reward-logo{ width:40px; height:40px; border-radius:8px; background:#eee }
+.reward-cta{ display:grid; justify-items:end; gap:6px; text-align:right; }
+.cost{ font-weight:700 }
+.badge{ font-size:.75rem; padding:4px 8px; border-radius:999px; background:#eee }
+
+.reward.can-redeem .badge{ background:#e8ffe8; color:#146c2e }
+.reward.locked{ opacity:.85 }
+.reward.locked .badge{ background:#fff1f1; color:#b00000 }
+.more-link{ text-align:center; padding:8px 0 14px }
+.more-link a{
+  display:inline-block; padding:6px 10px; border-radius:8px; color:#b00000;
+  transition:all .2s ease;
+}
+.more-link a:hover, .more-link a:focus-visible{ background:#b00000; color:#fff; }
+
+.ranking-list{ list-style:none; padding:12px }
+.ranking-list li{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center;
+  gap:10px; padding:10px; border:1px solid #f0f0f0; border-radius:10px; margin-bottom:8px; background:#fff;
+}
+.ranking-list .pos{
+  width:26px; height:26px; display:grid; place-items:center;
+  background:#ffe8e8; color:#b00000; border-radius:50%; font-weight:800
+}
+.ranking-list b{ color:#c40000 }
+
+.history-btn:focus-visible,
+.redeem-btn:focus-visible{
+  outline:3px solid #ffb3b3; outline-offset:2px;
+}
+
+.redeem-btn{
+  background:#c40000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:8px 10px;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.redeem-btn:hover:not([disabled]) {
+  background:#b00000;   
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.redeem-btn[disabled]{
+  background:#ddd;
+  color:#777;
+  cursor:not-allowed;
+  box-shadow:none;
+  transform:none;
+}
+
