@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const router = express.Router();
 
-const cadastroRoutes = require('./routes/cadastro.routes.js');
+const cadastroRoutes = require('./routes/cadastro.routes');
 
 const app = express();
 
@@ -16,6 +16,8 @@ app.use(morgan("dev"));
 
 //rotas
 app.use('/api', cadastroRoutes);
+
+module.exports = app;
 
 app.get("/", (req, res) => {
     res.json({ message: "API rodando com sucesso."});
