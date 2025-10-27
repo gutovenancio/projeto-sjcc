@@ -63,7 +63,7 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 - [Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=MPGOHOK1pskjaefL-0)
 
 ![Diagrama de atividades](./prints/diagrama.png)
-![Diagrama de atividades](./prints/Diagrama-de-Atividades-Perfil.png)
+
 
 
 
