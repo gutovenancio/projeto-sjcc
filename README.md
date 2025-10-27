@@ -55,11 +55,10 @@ A organização do projeto seguiu/segue uma evolução estruturada ao longo das 
 Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenciando as histórias de usuário e bugs planejados, em andamento e já concluídos.
 
 ### Quadro da Sprint
-
-![Uploading Screenshot 2025-10-27 at 14.09.53.png…]()
+<img width="1922" height="990" alt="Screenshot 2025-10-27 at 14 22 10" src="https://github.com/user-attachments/assets/1cc2359c-f439-4a77-bd78-93965b788354" />
 
 ### Backlog
-![Uploading Screenshot 2025-10-27 at 14.10.54.png…]()
+<img width="1916" height="990" alt="Screenshot 2025-10-27 at 14 23 01" src="https://github.com/user-attachments/assets/6494015c-5162-4c75-959f-a58c98e8fb93" />
 
 
 ## ⚙️ O Issue/Bug Tracker foi atualizado para refletir a realidade atual do projeto.
@@ -86,17 +85,15 @@ O print acima evidencia o uso de labels (história, bug, documentação, design,
 O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
 Ele foi elaborado para demonstrar de forma visual como as ações do usuário se conectam às respostas do sistema, servindo como base para a prototipação e desenvolvimento.
 
-[Diagrama de atividades](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=662-2324&p=f&t=MPGOHOK1pskjaefL-0)
+<img width="6921" height="7680" alt="Quadro Geral" src="https://github.com/user-attachments/assets/510acc88-1b7f-4f01-b963-b3fcef32f38b" />
 
-![Diagrama de atividades](./prints/diagrama.png)
+<img width="6921" height="5616" alt="Quadro Geral (1)" src="https://github.com/user-attachments/assets/cd81e3cc-4fea-4da0-95c2-75ff137544b4" />
 
-![Diagrama de atividades](./prints/Diag.perfil.png)
+<img width="3648" height="3584" alt="Quadro Geral (3)" src="https://github.com/user-attachments/assets/0e4c0f09-793d-4c25-bd2a-a0d4d6e0c37a" />
 
-![Diagrama de atividades](./prints/Streak.png)
+<img width="3648" height="4431" alt="Quadro Geral (5)" src="https://github.com/user-attachments/assets/bf923f4f-eff8-4e8a-85d1-cb05aaa71f0f" />
 
-![Diagrama de atividades](./prints/Indicação.png)
-
-
+<img width="3648" height="3584" alt="Quadro Geral (4)" src="https://github.com/user-attachments/assets/f8132899-a07f-4636-be66-19001cd72358" />
 
 ## ✏️ Prototipação Lo-Fi
 
