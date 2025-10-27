@@ -37,7 +37,7 @@ Todas as entregas do time são feitas em quadros do FigJam, separados por entreg
 - [Cronograma de Entregas no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=30-113&p=f&t=8X4nOILNXaKc3dhj-0)
 
 
-⚙️ O Issue/Bug Tracker foi atualizado para refletir a realidade atual do projeto.
+## ⚙️ O Issue/Bug Tracker foi atualizado para refletir a realidade atual do projeto.
 As issues representam histórias de usuário, bugs e tarefas de documentação, cada uma com rótulos (labels) e milestones específicas, permitindo o acompanhamento claro da evolução das sprints.
 
 🟢 Done: funcionalidades concluídas e bugs resolvidos
