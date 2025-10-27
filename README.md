@@ -93,6 +93,8 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 
 <img width="3648" height="3584" alt="Quadro Geral (4)" src="https://github.com/user-attachments/assets/f8132899-a07f-4636-be66-19001cd72358" />
 
+<img width="3648" height="4160" alt="Quadro Geral (1)" src="https://github.com/user-attachments/assets/83ce024a-2e35-41b9-ae1a-27f1fcabfd9c" />
+
 ## ✏️ Prototipação Lo-Fi
 
 Fizemos nossa prototipação lo-fi por meio do Figma, traduzindo bem nossa ideia para algo mais simples e fácil de assimilar
