@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil – SJCC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+
+  
+  <section class="top-row">
+    
+    <div class="top-left">
+      
+      <div class="top-grid" aria-label="Resumo">
+        <div class="mini-stat">
+          <div class="mini-icon">📰</div>
+          <div class="mini-value" id="metricNews">0</div>
+          <div class="mini-label">notícias lidas</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-icon">🔥</div>
+          <div class="mini-value" id="metricStreak">0</div>
+          <div class="mini-label">dias de streak</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-icon">🔗</div>
+          <div class="mini-value" id="metricReferrals">0</div>
+          <div class="mini-label">indicações</div>
+        </div>
+      </div>
+
+      
+      <section class="level-card" aria-label="Nível e Pontos">
+        <div class="level-header">
+          <span id="levelLabel">Nível 1</span>
+          <strong class="points-strong" id="userPointsHeader">0</strong>
+        </div>
+
+        <div class="level-progress">
+          <div class="level-bar-bg">
+            <div class="level-bar-fill" id="levelBar" style="width:0%"></div>
+          </div>
+          <div class="level-legend">
+            <span id="currentVsNext">0/0 pontos</span>
+            <span id="nextLevelHint">Chegue em 0 pontos para conseguir o nível 2</span>
+          </div>
+        </div>
+      </section>
+
+      
+      <div class="history-btn-wrapper">
+        <button class="history-btn" type="button">Ver histórico</button>
+      </div>
+    </div>
+
+   
+    <aside class="user-panel" aria-label="Usuário">
+      <img src="Foto de Perfil.png" alt="Avatar" class="user-avatar" />
+      <div class="user-info">
+        <strong class="user-name" id="userName">Lucas Oliveira</strong>
+        <div class="user-email" id="userEmail">lucasoliveira@email.com</div>
+        <div class="user-prefs" id="userPrefs">
+          <span>Política</span><span>Economia</span><span>Ciência</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+
+  <section class="content-grid">
+
+    
+    <div class="panel">
+      <div class="panel-header">Ofertas para você</div>
+      <ul class="rewards-list" id="rewardsList">
+       
+        <li class="reward" data-price-brl="30">
+          <div class="reward-info">
+            <img src="assets/rewards/Smiles.png" class="reward-logo" alt="">
+            <div>
+              <h4>Milhas no Smiles</h4>
+              <p>1000 milhas para você utilizar</p>
+            </div>
+          </div>
+          <div class="reward-cta">
+            <span class="cost">—</span>
+            <span class="badge status"></span>
+            <button class="redeem-btn" type="button" disabled>Resgatar</button>
+          </div>
+        </li>
+
+        <li class="reward" data-price-brl="25">
+          <div class="reward-info">
+            <img src="assets/rewards/Caneca JC.png" class="reward-logo" alt="">
+            <div>
+              <h4>Caneca do JC</h4>
+              <p>Personalizada com o seu nome</p>
+            </div>
+          </div>
+          <div class="reward-cta">
+            <span class="cost">—</span>
+            <span class="badge status"></span>
+            <button class="redeem-btn" type="button" disabled>Resgatar</button>
+          </div>
+        </li>
+
+        <li class="reward" data-price-brl="15">
+          <div class="reward-info">
+            <img src="assets/rewards/e-book jc.png" class="reward-logo" alt="">
+            <div>
+              <h4>E-book JC</h4>
+              <p>Conteúdo exclusivo sobre economia</p>
+            </div>
+          </div>
+          <div class="reward-cta">
+            <span class="cost">—</span>
+            <span class="badge status"></span>
+            <button class="redeem-btn" type="button" disabled>Resgatar</button>
+          </div>
+        </li>
+
+      
+        <li class="reward" data-price-brl="200">
+          <div class="reward-info">
+            <img src="assets/rewards/Netflix.png" class="reward-logo" alt="">
+            <div>
+              <h4>Voucher de R$ 200</h4>
+              <p>Vale para parceiros selecionados</p>
+            </div>
+          </div>
+          <div class="reward-cta">
+            <span class="cost">—</span>
+            <span class="badge status"></span>
+            <button class="redeem-btn" type="button" disabled>Resgatar</button>
+          </div>
+        </li>
+      </ul>
+
+      <p class="more-link">
+        <a href="#">Ver outras recompensas</a>
+      </p>
+    </div>
+
+
+    <div class="panel">
+      <div class="panel-header">Top Ranking</div>
+      <ol class="ranking-list">
+        <li><span class="pos">1</span> Ana Carolina Santos <b>100 🔥</b></li>
+        <li><span class="pos">2</span> Ricardo Mendes <b>89 🔥</b></li>
+        <li><span class="pos">3</span> Maria Julia Costa <b>63 🔥</b></li>
+        <li><span class="pos">4</span> Lucas Oliveira <b>50 🔥</b></li>
+        <li><span class="pos">5</span> Leila Soares <b>49 🔥</b></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<script>
+  const NEWS_READ   = 230;
+  const STREAK_DAYS = 50;
+  const REFERRALS   = 5;
+  const USER_POINTS = 2350; 
+
+
+  const POINTS_PER_BRL = 20; // 1 real = 20 pontos
+
+  function pointsForLevel(level){
+    if (level <= 1) return 0;
+    return 50 * Math.pow(2, level - 2);
+  }
+
+  function calculateLevel(totalPoints){
+    let level = 1;
+    while (totalPoints >= pointsForLevel(level + 1)) level++;
+    return level;
+  }
+
+  const USER_LEVEL = calculateLevel(USER_POINTS);
+  const PREV_REQ   = pointsForLevel(USER_LEVEL);
+  const NEXT_REQ   = pointsForLevel(USER_LEVEL + 1);
+  const CURR_IN_LV = USER_POINTS - PREV_REQ;
+  const GAP_LV     = Math.max(1, NEXT_REQ - PREV_REQ);
+  const PCT        = Math.max(0, Math.min(100, Math.round((CURR_IN_LV / GAP_LV) * 100)));
+
+  document.getElementById('metricNews').textContent      = NEWS_READ;
+  document.getElementById('metricStreak').textContent    = STREAK_DAYS;
+  document.getElementById('metricReferrals').textContent = REFERRALS;
+
+  document.getElementById('userPointsHeader').textContent = USER_POINTS.toLocaleString('pt-BR');
+  document.getElementById('levelLabel').textContent       = `Nível ${USER_LEVEL}`;
+  document.getElementById('levelBar').style.width         = PCT + '%';
+  document.getElementById('currentVsNext').textContent    = `${CURR_IN_LV}/${GAP_LV} pontos`;
+  document.getElementById('nextLevelHint').textContent    = `Chegue em ${NEXT_REQ} pontos para conseguir o nível ${USER_LEVEL + 1}`;
+
+  document.querySelectorAll('#rewardsList .reward').forEach(item => {
+    const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
+    const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
+    const costEl   = item.querySelector('.cost');
+    const statusEl = item.querySelector('.status');
+    const btn      = item.querySelector('.redeem-btn');
+
+    costEl.textContent = `${costPts} pts`;
+
+    if (USER_POINTS >= costPts) {
+      item.classList.add('can-redeem');
+      statusEl.textContent = 'Disponível';
+      btn.disabled = false;
+    } else {
+      item.classList.add('locked');
+      statusEl.textContent = `Faltam ${costPts - USER_POINTS} pts`;
+      btn.disabled = true;
+    }
+  });
+
+</script>
+</body>
+</html>
