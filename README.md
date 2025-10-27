@@ -134,9 +134,9 @@ O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no fi
 [![Assista ao Teste de Sistema]](https://youtu.be/OIJaiMSNTZA)
 
 ## 🤝 Pair Programming
-Durante o desenvolvimento das features, realizamos diversas sessões de pair programming entre integrantes das áreas de frontend e backend, com o objetivo de melhorar a integração entre as partes do sistema e garantir uma entrega mais fluida.
+Durante o desenvolvimento das tarefas, realizamos diversas sessões de pair programming entre integrantes das áreas de frontend e backend, com o objetivo de melhorar a integração entre as partes do sistema e garantir uma entrega mais fluida.
 
-As duplas se formavam conforme a complexidade da tarefa — por exemplo, frontend + backend para conectar rotas e componentes, ou design + frontend para validar fluxos e microinterações. Essas sessões ocorreram principalmente durante as sprints 8 a 10, com foco na sincronização entre o protótipo do Figma e a implementação no código.
+As duplas se formavam conforme a complexidade da tarefa — por exemplo, frontend + backend para conectar rotas e componentes, ou design + frontend para validar fluxos e microinterações. Essas sessões ocorrem desde a sprint 6, com foco na sincronização entre o protótipo do Figma e a implementação no código.
 
 Cada sessão seguiu o formato:
 
@@ -156,4 +156,5 @@ Melhor entendimento coletivo da arquitetura do sistema;
 
 Entregas mais consistentes e alinhadas ao protótipo Lo-Fi.
 
-> O pair programming foi essencial para fortalecer o trabalho em equipe e aprimorar o aprendizado mútuo dentro do time, especialmente entre os papéis técnicos e de design.
+> O pair programming foi essencial para fortalecer o trabalho em equipe e aprimorar o aprendizado mútuo dentro do time.
+![b45d2696-382b-4b0a-b881-66226d059609](https://github.com/user-attachments/assets/a5bd2bd4-f569-4435-b99e-e58b86f54ed3)
