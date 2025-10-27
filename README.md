@@ -34,7 +34,25 @@ Leitores recorrentes e ocasionais dos portais do SJCC que chegam por busca/redes
 Todas as entregas do time são feitas em quadros do FigJam, separados por entregas e acompanhados de um cronograma, e também no ClickUp, onde organizamos o prazo das entregas, a prioridade e os responsáveis por cada atividade.
 
 - [Quadro Geral de Histórias de Usuário no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3696&p=f&t=8X4nOILNXaKc3dhj-0) 
-- [Cronograma de Entregas no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=30-113&p=f&t=8X4nOILNXaKc3dhj-0) 
+- [Cronograma de Entregas no FigJam](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=30-113&p=f&t=8X4nOILNXaKc3dhj-0)
+
+
+⚙️ O Issue/Bug Tracker foi atualizado para refletir a realidade atual do projeto.
+As issues representam histórias de usuário, bugs e tarefas de documentação, cada uma com rótulos (labels) e milestones específicas, permitindo o acompanhamento claro da evolução das sprints.
+
+🟢 Done: funcionalidades concluídas e bugs resolvidos
+
+🟠 In Progress: itens em desenvolvimento
+
+🔵 To Do: tarefas planejadas para execução
+
+📋 O quadro de issues inclui entregas anteriores (Entregas 02 e 03) e a Sprint atual (Sprint 10), garantindo rastreabilidade entre as iterações do projeto.
+
+📸 Print do quadro de Issues no GitHub:
+
+<img width="1835" height="886" alt="Captura de tela 2025-10-27 004611" src="https://github.com/user-attachments/assets/caaec00e-a55e-4847-881f-8971e2b0491b" />
+<img width="1892" height="886" alt="Captura de tela 2025-10-27 004246" src="https://github.com/user-attachments/assets/f8ec5cba-2aba-4f93-b867-24e471dd17dc" />
+O print acima evidencia o uso de labels (história, bug, documentação, design, organização), diferentes status e milestones correspondentes às sprints do projeto.
 
 
 
@@ -81,15 +99,6 @@ O vídeo abaixo apresenta o fluxo principal do protótipo Lo-Fi desenvolvido par
 
 
 
-## ⚙️ Issues / Bug Tracker
-
-Acompanhamento via GitHub Issues.
-
-### Issues concluídas
-![Issues fechadas](./prints/issues-closed.png)
-
-
-
 ## 🗂️ Quadro da Sprint e Backlog
 
 Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenciando as histórias de usuário e bugs planejados, em andamento e já concluídos.
@@ -99,5 +108,6 @@ Abaixo estão os registros do quadro atualizado da sprint e do backlog, evidenci
 
 ### Backlog
 ![Backlog(atualizado)](./prints/backlog-atualizado.png)
+
 
 
