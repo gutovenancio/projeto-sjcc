@@ -64,8 +64,11 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 
 ![Diagrama de atividades](./prints/diagrama.png)
 
+![Diagrama de atividades](./prints/Diagrama-de-Atividades-Perfil.png)
 
+![Diagrama de atividades](./prints/Diagram-de-Atividades-Streak.png)
 
+![Diagrama de atividades](./prints/Diagrama-de-Atividades-Perfil.png)
 
 
 
