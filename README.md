@@ -78,8 +78,6 @@ As issues representam histórias de usuário, bugs e tarefas de documentação, 
 <img width="1892" height="886" alt="Captura de tela 2025-10-27 004246" src="https://github.com/user-attachments/assets/f8ec5cba-2aba-4f93-b867-24e471dd17dc" />
 O print acima evidencia o uso de labels (história, bug, documentação, design, organização), diferentes status e milestones correspondentes às sprints do projeto.
 
-
-
 ## 📊 Diagrama de Atividades
 
 O diagrama abaixo representa o fluxo principal de interação do usuário no sistema, desde o cadastro até a recomendação de novas notícias.  
@@ -89,9 +87,11 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 
 <img width="6921" height="5616" alt="Quadro Geral (1)" src="https://github.com/user-attachments/assets/cd81e3cc-4fea-4da0-95c2-75ff137544b4" />
 
-<img width="3648" height="3456" alt="Quadro Geral (2)" src="https://github.com/user-attachments/assets/b81c703b-32d2-4ed9-84a2-cdb8cf38c85d" />
-
 <img width="3648" height="3584" alt="Quadro Geral (3)" src="https://github.com/user-attachments/assets/0e4c0f09-793d-4c25-bd2a-a0d4d6e0c37a" />
+
+<img width="3648" height="4431" alt="Quadro Geral (5)" src="https://github.com/user-attachments/assets/bf923f4f-eff8-4e8a-85d1-cb05aaa71f0f" />
+
+<img width="3648" height="3584" alt="Quadro Geral (4)" src="https://github.com/user-attachments/assets/f8132899-a07f-4636-be66-19001cd72358" />
 
 ## ✏️ Prototipação Lo-Fi
 
@@ -131,4 +131,27 @@ O vídeo abaixo apresenta a tela de perfil, de recompensas e de histórico no fi
 
 [![Assista ao Teste de Sistema]](https://youtu.be/OIJaiMSNTZA)
 
+## 🤝 Pair Programming
+Durante o desenvolvimento das features, realizamos diversas sessões de pair programming entre integrantes das áreas de frontend e backend, com o objetivo de melhorar a integração entre as partes do sistema e garantir uma entrega mais fluida.
 
+As duplas se formavam conforme a complexidade da tarefa — por exemplo, frontend + backend para conectar rotas e componentes, ou design + frontend para validar fluxos e microinterações. Essas sessões ocorreram principalmente durante as sprints 8 a 10, com foco na sincronização entre o protótipo do Figma e a implementação no código.
+
+Cada sessão seguiu o formato:
+
+🧭 Definição da tarefa conjunta;
+
+💻 Codificação colaborativa em tempo real;
+
+🔍 Validação imediata de lógica, estilo e comportamento da interface;
+
+Essa prática resultou em:
+
+Maior padronização de código e melhor comunicação entre áreas;
+
+Redução de bugs de integração;
+
+Melhor entendimento coletivo da arquitetura do sistema;
+
+Entregas mais consistentes e alinhadas ao protótipo Lo-Fi.
+
+> O pair programming foi essencial para fortalecer o trabalho em equipe e aprimorar o aprendizado mútuo dentro do time, especialmente entre os papéis técnicos e de design.
