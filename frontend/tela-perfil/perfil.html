@@ -18,12 +18,12 @@
       <div class="top-grid" aria-label="Resumo">
         <div class="mini-stat">
           <div class="mini-icon">📰</div>
-          <div class="mini-value" id="metricNews">0</div>
+          <div class="mini-value" id="read-articles-value">0</div>
           <div class="mini-label">notícias lidas</div>
         </div>
         <div class="mini-stat">
           <div class="mini-icon">🔥</div>
-          <div class="mini-value" id="metricStreak">0</div>
+          <div class="mini-value" id="streak-value">0</div>
           <div class="mini-label">dias de streak</div>
         </div>
         <div class="mini-stat">
@@ -51,7 +51,11 @@
         </div>
       </section>
 
-      
+      <div class="actions-area">
+      <button id="read-article-button" class="action-button">Li um Artigo!</button>
+      <p id="status-message" class="status-message"></p>
+      </div>
+
       <div class="history-btn-wrapper">
         <button class="history-btn" type="button">Ver histórico</button>
       </div>
@@ -160,61 +164,118 @@
 </main>
 
 <script>
-  const NEWS_READ   = 230;
-  const STREAK_DAYS = 50;
-  const REFERRALS   = 5;
-  const USER_POINTS = 2350; 
 
+    const USER_ID = 1; 
+    const API_URL = 'http://localhost:3000';
 
-  const POINTS_PER_BRL = 20; // 1 real = 20 pontos
+    const streakValueElement = document.getElementById('streak-value');
+    const readArticlesValueElement = document.getElementById('read-articles-value');
+    const readArticleButton = document.getElementById('read-article-button');
+    const statusMessageElement = document.getElementById('status-message');
 
-  function pointsForLevel(level){
-    if (level <= 1) return 0;
-    return 50 * Math.pow(2, level - 2);
-  }
+         /* Função para buscar os dados do streak e de leituras na API e atualizar a página.*/
+        async function fetchUserStats() {
+            try {
+                const response = await fetch(`${API_URL}/streak/${USER_ID}`);
+                
+                if (response.ok) {
+                    const statsData = await response.json();
+                    
+                    streakValueElement.textContent = statsData.current_streak;
+                    readArticlesValueElement.textContent = statsData.totalReads;
 
-  function calculateLevel(totalPoints){
-    let level = 1;
-    while (totalPoints >= pointsForLevel(level + 1)) level++;
-    return level;
-  }
+                } else {
+                    streakValueElement.textContent = 0;
+                    readArticlesValueElement.textContent = 0;
+                }
 
-  const USER_LEVEL = calculateLevel(USER_POINTS);
-  const PREV_REQ   = pointsForLevel(USER_LEVEL);
-  const NEXT_REQ   = pointsForLevel(USER_LEVEL + 1);
-  const CURR_IN_LV = USER_POINTS - PREV_REQ;
-  const GAP_LV     = Math.max(1, NEXT_REQ - PREV_REQ);
-  const PCT        = Math.max(0, Math.min(100, Math.round((CURR_IN_LV / GAP_LV) * 100)));
+            } catch (error) {
+                console.error('Erro ao buscar estatísticas:', error);
+                statusMessageElement.textContent = 'Erro ao carregar dados.';
+                streakValueElement.textContent = 0;
+                readArticlesValueElement.textContent = 0;
+            }
+        }
 
-  document.getElementById('metricNews').textContent      = NEWS_READ;
-  document.getElementById('metricStreak').textContent    = STREAK_DAYS;
-  document.getElementById('metricReferrals').textContent = REFERRALS;
+    async function incrementStreak() {
+        statusMessageElement.textContent = 'Registrando leitura...';
+        try {
+            const response = await fetch(`${API_URL}/streak/increment`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: USER_ID,
+                    articleId: `artigo-lido-em-${new Date().toISOString()}`
+                }),
+            });
 
-  document.getElementById('userPointsHeader').textContent = USER_POINTS.toLocaleString('pt-BR');
-  document.getElementById('levelLabel').textContent       = `Nível ${USER_LEVEL}`;
-  document.getElementById('levelBar').style.width         = PCT + '%';
-  document.getElementById('currentVsNext').textContent    = `${CURR_IN_LV}/${GAP_LV} pontos`;
-  document.getElementById('nextLevelHint').textContent    = `Chegue em ${NEXT_REQ} pontos para conseguir o nível ${USER_LEVEL + 1}`;
+            const result = await response.json();
 
-  document.querySelectorAll('#rewardsList .reward').forEach(item => {
-    const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
-    const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
-    const costEl   = item.querySelector('.cost');
-    const statusEl = item.querySelector('.status');
-    const btn      = item.querySelector('.redeem-btn');
+            if (response.ok) {
+                streakValueElement.textContent = result.current_streak;
+                readArticlesValueElement.textContent = result.totalReads;
+                statusMessageElement.textContent = result.status;
+            } else {
+                statusMessageElement.textContent = `Erro: ${result.error}`;
+            }
 
-    costEl.textContent = `${costPts} pts`;
-
-    if (USER_POINTS >= costPts) {
-      item.classList.add('can-redeem');
-      statusEl.textContent = 'Disponível';
-      btn.disabled = false;
-    } else {
-      item.classList.add('locked');
-      statusEl.textContent = `Faltam ${costPts - USER_POINTS} pts`;
-      btn.disabled = true;
+        } catch (error) {
+            console.error('Erro ao registrar leitura:', error);
+            statusMessageElement.textContent = 'Não foi possível conectar à API.';
+        }
     }
-  });
+    
+    document.addEventListener('DOMContentLoaded', fetchUserStats);
+    readArticleButton.addEventListener('click', incrementStreak);
+    const REFERRALS   = 5;
+    const USER_POINTS = 2350; 
+    const POINTS_PER_BRL = 20; 
+
+    document.getElementById('metricReferrals').textContent = REFERRALS;
+
+    function pointsForLevel(level){
+      if (level <= 1) return 0;
+      return 50 * Math.pow(2, level - 2);
+    }
+
+    function calculateLevel(totalPoints){
+      let level = 1;
+      while (totalPoints >= pointsForLevel(level + 1)) level++;
+      return level;
+    }
+
+    const USER_LEVEL = calculateLevel(USER_POINTS);
+    const PREV_REQ   = pointsForLevel(USER_LEVEL);
+    const NEXT_REQ   = pointsForLevel(USER_LEVEL + 1);
+    const CURR_IN_LV = USER_POINTS - PREV_REQ;
+    const GAP_LV     = Math.max(1, NEXT_REQ - PREV_REQ);
+    const PCT        = Math.max(0, Math.min(100, Math.round((CURR_IN_LV / GAP_LV) * 100)));
+
+    document.getElementById('userPointsHeader').textContent = USER_POINTS.toLocaleString('pt-BR');
+    document.getElementById('levelLabel').textContent       = `Nível ${USER_LEVEL}`;
+    document.getElementById('levelBar').style.width         = PCT + '%';
+    document.getElementById('currentVsNext').textContent    = `${CURR_IN_LV}/${GAP_LV} pontos`;
+    document.getElementById('nextLevelHint').textContent    = `Chegue em ${NEXT_REQ} pontos para conseguir o nível ${USER_LEVEL + 1}`;
+
+    document.querySelectorAll('#rewardsList .reward').forEach(item => {
+      const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
+      const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
+      const costEl   = item.querySelector('.cost');
+      const statusEl = item.querySelector('.status');
+      const btn      = item.querySelector('.redeem-btn');
+
+      costEl.textContent = `${costPts} pts`;
+
+      if (USER_POINTS >= costPts) {
+        item.classList.add('can-redeem');
+        statusEl.textContent = 'Disponível';
+        btn.disabled = false;
+      } else {
+        item.classList.add('locked');
+        statusEl.textContent = `Faltam ${costPts - USER_POINTS} pts`;
+        btn.disabled = true;
+      }
+    });
 
 </script>
 </body>
