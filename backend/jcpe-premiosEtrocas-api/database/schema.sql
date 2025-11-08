@@ -8,7 +8,7 @@ CREATE TABLE rewards (
     title VARCHAR(100) NOT NULL,
     description TEXT,
     cost_points INT NOT NULL,
-    stock INT,
+    stock INT,  
     is_active TINYINT(1) DEFAULT 1
 );
 
