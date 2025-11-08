@@ -120,14 +120,17 @@ app.post('/streak/increment', async (req, res) => {
     const { userId, articleId } = req.body;
     console.log(`[POST /streak/increment] Recebida requisição para userId: ${userId}, articleId: ${articleId}`);
 
+    // --- LÓGICA REVERTIDA E CORRIGIDA ---
+    // 1. Procura o usuário.
     const user = await User.findByPk(userId);
+
+    // 2. CORREÇÃO DO BUG: Verifica se o usuário NÃO foi encontrado.
     if (!user) {
+      console.error(`[ERRO em /streak/increment] Usuário com ID ${userId} não encontrado no banco de dados de streaks.`);
       return res.status(404).json({ error: "Usuário não encontrado." });
     }
     
-    // --- LÓGICA PRINCIPAL ATUALIZADA ---
-
-    // 1. A leitura de um artigo é sempre registrada, independentemente do streak.
+    // 3. A leitura de um artigo é sempre registada
     const nowUtc = new Date();
     await ReadingLog.create({
       article_id: articleId,
@@ -135,10 +138,10 @@ app.post('/streak/increment', async (req, res) => {
       UserId: user.id
     });
     
-    // 2. Após registrar, contamos o total de leituras para este usuário.
+    // 4. Após registar, contamos o total de leituras
     const totalReads = await ReadingLog.count({ where: { UserId: user.id } });
 
-    // 3. Agora, cuidamos da lógica do streak.
+    // 5. Agora, cuidamos da lógica do streak.
     const userTimezone = user.timezone || 'America/Recife';
     const todayStr = formatInTimeZone(nowUtc, userTimezone, 'yyyy-MM-dd');
     const yesterdayStr = format(subDays(toZonedTime(nowUtc, userTimezone), 1), 'yyyy-MM-dd');
@@ -148,19 +151,18 @@ app.post('/streak/increment', async (req, res) => {
       defaults: { current_streak: 0 }
     });
     
-    // 4. Verificamos se o streak precisa ser atualizado.
+    // 6. Verificamos se o streak precisa ser atualizado.
     if (userStreak.last_read_date === todayStr) {
-      console.log(`[POST /streak/increment] Idempotência de streak: Leitura já registrada hoje para userId: ${userId}.`);
-      // Retorna o status de idempotência, mas com o total de leituras atualizado.
+      console.log(`[POST /streak/increment] Idempotência de streak: Leitura já registada hoje para userId: ${userId}.`);
       return res.status(200).json({
-        status: "Leitura já registrada para hoje.",
+        status: "Leitura já registada para hoje.",
         userId: user.id,
         current_streak: userStreak.current_streak,
-        totalReads: totalReads // <--- NOVO
+        totalReads: totalReads
       });
     }
 
-    // 5. Se o streak precisa ser atualizado, calculamos o novo valor.
+    // 7. Se o streak precisa ser atualizado, calculamos o novo valor.
     const newStreakValue = userStreak.last_read_date === yesterdayStr
       ? userStreak.current_streak + 1
       : 1;
@@ -176,12 +178,12 @@ app.post('/streak/increment', async (req, res) => {
       last_read_date: todayStr
     });
 
-    // 6. Retornamos a resposta completa com o novo streak e o total de leituras.
+    // 8. Retornamos a resposta completa
     res.status(200).json({
-      status: "Leitura registrada com sucesso!",
+      status: "Leitura registada com sucesso!",
       userId: user.id,
       current_streak: newStreakValue,
-      totalReads: totalReads // <--- NOVO
+      totalReads: totalReads
     });
 
   } catch (error) {

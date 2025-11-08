@@ -164,119 +164,89 @@
 </main>
 
 <script>
-
+    // --- CONFIGURAÇÃO ---
     const USER_ID = 1; 
-    const API_URL = 'http://localhost:3000';
+    const PROFILE_API_URL = 'http://localhost:4000'; // Nosso endpoint agregador
 
-    const streakValueElement = document.getElementById('streak-value');
-    const readArticlesValueElement = document.getElementById('read-articles-value');
-    const readArticleButton = document.getElementById('read-article-button');
-    const statusMessageElement = document.getElementById('status-message');
-
-         /* Função para buscar os dados do streak e de leituras na API e atualizar a página.*/
-        async function fetchUserStats() {
-            try {
-                const response = await fetch(`${API_URL}/streak/${USER_ID}`);
-                
-                if (response.ok) {
-                    const statsData = await response.json();
-                    
-                    streakValueElement.textContent = statsData.current_streak;
-                    readArticlesValueElement.textContent = statsData.totalReads;
-
-                } else {
-                    streakValueElement.textContent = 0;
-                    readArticlesValueElement.textContent = 0;
-                }
-
-            } catch (error) {
-                console.error('Erro ao buscar estatísticas:', error);
-                statusMessageElement.textContent = 'Erro ao carregar dados.';
-                streakValueElement.textContent = 0;
-                readArticlesValueElement.textContent = 0;
-            }
-        }
-
-    async function incrementStreak() {
-        statusMessageElement.textContent = 'Registrando leitura...';
-        try {
-            const response = await fetch(`${API_URL}/streak/increment`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    userId: USER_ID,
-                    articleId: `artigo-lido-em-${new Date().toISOString()}`
-                }),
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                streakValueElement.textContent = result.current_streak;
-                readArticlesValueElement.textContent = result.totalReads;
-                statusMessageElement.textContent = result.status;
-            } else {
-                statusMessageElement.textContent = `Erro: ${result.error}`;
-            }
-
-        } catch (error) {
-            console.error('Erro ao registrar leitura:', error);
-            statusMessageElement.textContent = 'Não foi possível conectar à API.';
-        }
+    // --- FUNÇÕES DE LÓGICA E RENDERIZAÇÃO ---
+    function pointsForLevel(level) {
+        if (level <= 1) return 0;
+        return 50 * Math.pow(2, level - 2);
+    }
+    function calculateLevel(totalPoints) {
+        let level = 1;
+        while (totalPoints >= pointsForLevel(level + 1)) level++;
+        return level;
     }
     
-    document.addEventListener('DOMContentLoaded', fetchUserStats);
-    readArticleButton.addEventListener('click', incrementStreak);
-    const REFERRALS   = 5;
-    const USER_POINTS = 2350; 
-    const POINTS_PER_BRL = 20; 
+    function renderProfile(data) {
+        // Métricas principais
+        document.getElementById('read-articles-value').textContent = data.metrics.newsRead;
+        document.getElementById('streak-value').textContent = data.metrics.streakDays;
+        document.getElementById('metricReferrals').textContent = data.metrics.referrals;
 
-    document.getElementById('metricReferrals').textContent = REFERRALS;
+        // Informações do usuário
+        document.getElementById('userName').textContent = data.user.name;
+        document.getElementById('userEmail').textContent = data.user.email;
+        const prefsContainer = document.getElementById('userPrefs');
+        prefsContainer.innerHTML = '';
+        data.user.prefs.forEach(pref => {
+            const span = document.createElement('span');
+            span.textContent = pref;
+            prefsContainer.appendChild(span);
+        });
 
-    function pointsForLevel(level){
-      if (level <= 1) return 0;
-      return 50 * Math.pow(2, level - 2);
+        // Nível e Pontos
+        const userPoints = data.leveling.userPoints;
+        const userLevel = calculateLevel(userPoints);
+        const prevReq = pointsForLevel(userLevel);
+        const nextReq = pointsForLevel(userLevel + 1);
+        const currInLv = userPoints - prevReq;
+        const gapLv = Math.max(1, nextReq - prevReq);
+        const pct = Math.max(0, Math.min(100, Math.round((currInLv / gapLv) * 100)));
+
+        document.getElementById('userPointsHeader').textContent = userPoints.toLocaleString('pt-BR');
+        document.getElementById('levelLabel').textContent = `Nível ${userLevel}`;
+        document.getElementById('levelBar').style.width = pct + '%';
+        document.getElementById('currentVsNext').textContent = `${currInLv}/${gapLv} pontos`;
+        document.getElementById('nextLevelHint').textContent = `Chegue em ${nextReq} pontos para conseguir o nível ${userLevel + 1}`;
+        
+        // Lógica de Recompensas
+        const POINTS_PER_BRL = 20;
+        document.querySelectorAll('#rewardsList .reward').forEach(item => {
+            const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
+            const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
+            const costEl   = item.querySelector('.cost');
+            const statusEl = item.querySelector('.status');
+            const btn      = item.querySelector('.redeem-btn');
+            costEl.textContent = `${costPts} pts`;
+            if (userPoints >= costPts) {
+                item.classList.add('can-redeem');
+                statusEl.textContent = 'Disponível';
+                btn.disabled = false;
+            } else {
+                item.classList.add('locked');
+                statusEl.textContent = `Faltam ${userPoints - costPts} pts`;
+                btn.disabled = true;
+            }
+        });
     }
 
-    function calculateLevel(totalPoints){
-      let level = 1;
-      while (totalPoints >= pointsForLevel(level + 1)) level++;
-      return level;
+    async function initializeProfile() {
+        try {
+            const response = await fetch(`${PROFILE_API_URL}/profile/${USER_ID}`);
+            if (!response.ok) {
+                throw new Error('Falha ao carregar dados do perfil.');
+            }
+            const profileData = await response.json();
+            renderProfile(profileData);
+        } catch (error) {
+            console.error('Erro ao inicializar o perfil:', error);
+        }
     }
 
-    const USER_LEVEL = calculateLevel(USER_POINTS);
-    const PREV_REQ   = pointsForLevel(USER_LEVEL);
-    const NEXT_REQ   = pointsForLevel(USER_LEVEL + 1);
-    const CURR_IN_LV = USER_POINTS - PREV_REQ;
-    const GAP_LV     = Math.max(1, NEXT_REQ - PREV_REQ);
-    const PCT        = Math.max(0, Math.min(100, Math.round((CURR_IN_LV / GAP_LV) * 100)));
-
-    document.getElementById('userPointsHeader').textContent = USER_POINTS.toLocaleString('pt-BR');
-    document.getElementById('levelLabel').textContent       = `Nível ${USER_LEVEL}`;
-    document.getElementById('levelBar').style.width         = PCT + '%';
-    document.getElementById('currentVsNext').textContent    = `${CURR_IN_LV}/${GAP_LV} pontos`;
-    document.getElementById('nextLevelHint').textContent    = `Chegue em ${NEXT_REQ} pontos para conseguir o nível ${USER_LEVEL + 1}`;
-
-    document.querySelectorAll('#rewardsList .reward').forEach(item => {
-      const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
-      const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
-      const costEl   = item.querySelector('.cost');
-      const statusEl = item.querySelector('.status');
-      const btn      = item.querySelector('.redeem-btn');
-
-      costEl.textContent = `${costPts} pts`;
-
-      if (USER_POINTS >= costPts) {
-        item.classList.add('can-redeem');
-        statusEl.textContent = 'Disponível';
-        btn.disabled = false;
-      } else {
-        item.classList.add('locked');
-        statusEl.textContent = `Faltam ${costPts - USER_POINTS} pts`;
-        btn.disabled = true;
-      }
-    });
-
+    // --- PONTO DE ENTRADA ---
+    document.addEventListener('DOMContentLoaded', initializeProfile);
 </script>
 </body>
 </html>
