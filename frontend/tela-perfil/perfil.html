@@ -222,73 +222,206 @@
 </main>
 
 <script>
-  const isLoggedIn    = true;   
-  const userHasStreak = true;   
-  const NEWS_READ = 230;
-  const STREAK_DAYS = 50;
-  const REFERRALS = 5;
-  const USER_POINTS = 2350;   
-  const WALLET = 2350;        
+  // --- INÍCIO DO CÓDIGO DE INTEGRAÇÃO DA API ---
 
-  const POINTS_PER_BRL = 20; 
+// --- 1. CONFIGURAÇÃO ---
+    const USER_ID = 1; // Em um sistema real, este ID viria do sistema de login.
+    const PROFILE_API_URL = 'http://localhost:4000'; // Nosso endpoint agregador!
+    const POINTS_PER_BRL = 20; 
 
-  function pointsForLevel(level){
-    if (level <= 1) return 0;
-    return 50 * Math.pow(2, level - 2);
-  }
-  function calculateLevel(totalPoints){
-    let level = 1;
-    while (totalPoints >= pointsForLevel(level + 1)) level++;
-    return level;
-  }
-
-  const LEVEL = calculateLevel(USER_POINTS);
-  const PREV_REQ = pointsForLevel(LEVEL);
-  const NEXT_REQ = pointsForLevel(LEVEL + 1);
-  const CURR_IN_LEVEL = USER_POINTS - PREV_REQ;
-  const GAP = Math.max(1, NEXT_REQ - PREV_REQ);
-  const PCT = Math.max(0, Math.min(100, Math.round((CURR_IN_LEVEL / GAP) * 100)));
-
-  document.getElementById('metricNews').textContent   = NEWS_READ;
-  document.getElementById('metricStreak').textContent = STREAK_DAYS;
-  document.getElementById('metricReferrals').textContent = REFERRALS;
-  document.getElementById('walletCoins').textContent = `${WALLET} jcoins`;
-
-  document.getElementById('levelLabel').textContent = `Nível ${LEVEL}`;
-  document.getElementById('levelBar').style.width   = PCT + '%';
-  // direita: pontos atuais / pontos para o próximo nível
-  document.getElementById('pointsRight').textContent = `${USER_POINTS} / ${NEXT_REQ} pontos`;
-  document.getElementById('nextLevelHint').textContent = `Chegue em ${NEXT_REQ} pontos para conseguir o próximo nível`;
-
-  document.querySelectorAll('#rewardsList .reward').forEach(item => {
-    const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
-    const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
-
-    const numberEl = item.querySelector('.jcoin-value');
-    const statusEl = item.querySelector('.status');
-    const btn      = item.querySelector('.redeem-btn');
-
-    if (numberEl) numberEl.textContent = costPts;
-
-    if (USER_POINTS >= costPts) {
-      item.classList.add('can-redeem');
-      statusEl.textContent = 'Disponível';
-      btn.disabled = false;
-    } else {
-      item.classList.add('locked');
-      statusEl.textContent = `Faltam ${costPts - USER_POINTS} JCoins`;
-      btn.disabled = true;
+    // --- 2. FUNÇÕES DE LÓGICA DE CÁLCULO (Reutilizadas) ---
+    function pointsForLevel(level) {
+        if (level <= 1) return 0;
+        return 50 * Math.pow(2, level - 2);
     }
-  });
+    function calculateLevel(totalPoints) {
+        let level = 1;
+        while (totalPoints >= pointsForLevel(level + 1)) level++;
+        return level;
+    }
+    
+    // --- 3. FUNÇÕES DE RENDERIZAÇÃO (Para preencher a tela) ---
 
-  // Ranking: esconde lista se não estiver logado
-  document.getElementById('rankingList').style.display  = isLoggedIn ? '' : 'none';
-  document.getElementById('rankingEmpty').style.display = isLoggedIn ? 'none' : '';
+    // Esta função preenche os 3 cartões do topo
+    function renderMetrics(metrics) {
+        document.getElementById('read-articles-value').textContent = metrics.newsRead;
+        document.getElementById('streak-value').textContent = metrics.streakDays;
+        document.getElementById('metricReferrals').textContent = metrics.referrals;
+    }
 
-  const showActive = isLoggedIn && userHasStreak;
-  document.getElementById('levelCard').style.display      = showActive ? '' : 'none';
-  document.getElementById('userPanel').style.display      = showActive ? '' : 'none';
-  document.getElementById('perfilInativoCard').style.display = showActive ? 'none' : '';
+    // Esta função preenche o painel de usuário
+    function renderUserPanel(user, wallet) {
+        document.getElementById('userName').textContent = user.name;
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('walletCoins').textContent = `${wallet.toLocaleString('pt-BR')} jcoins`;
+        
+        const prefsContainer = document.getElementById('userPrefs');
+        prefsContainer.innerHTML = ''; 
+        user.prefs.forEach(pref => {
+            const span = document.createElement('span');
+            span.className = 'chip'; 
+            span.textContent = pref;
+            prefsContainer.appendChild(span);
+        });
+    }
+
+    // Esta função preenche o card de Nível e Pontos
+    function renderLevelCard(userPoints) {
+        const userLevel = calculateLevel(userPoints);
+        const prevReq = pointsForLevel(userLevel);
+        const nextReq = pointsForLevel(userLevel + 1);
+        const currInLv = userPoints - prevReq;
+        const gapLv = Math.max(1, nextReq - prevReq);
+        const pct = Math.max(0, Math.min(100, Math.round((currInLv / gapLv) * 100)));
+
+        document.getElementById('pointsRight').textContent = `${userPoints.toLocaleString('pt-BR')} / ${nextReq.toLocaleString('pt-BR')} pontos`;
+        document.getElementById('levelLabel').textContent = `Nível ${userLevel}`;
+        document.getElementById('levelBar').style.width = pct + '%';
+        document.getElementById('nextLevelHint').textContent = `Chegue em ${nextReq.toLocaleString('pt-BR')} pontos para conseguir o próximo nível`;
+    }
+
+    // Esta função preenche a lista de recompensas
+    function renderRewards(rewards, userPoints) {
+        document.querySelectorAll('#rewardsList .reward').forEach(item => {
+            const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
+            const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
+            const numberEl = item.querySelector('.jcoin-value');
+            const statusEl = item.querySelector('.status');
+            const btn      = item.querySelector('.redeem-btn');
+
+            if (numberEl) numberEl.textContent = costPts;
+
+            if (userPoints >= costPts) {
+                item.classList.add('can-redeem');
+                statusEl.textContent = 'Disponível';
+                btn.disabled = false;
+            } else {
+                item.classList.add('locked');
+                statusEl.textContent = `Faltam ${costPts - userPoints} JCoins`;
+                btn.disabled = true;
+            }
+        });
+    }
+
+    // Esta função preenche o ranking
+    function renderRanking(rankingData, myUserId) {
+        const rankingList = document.getElementById('rankingList');
+        rankingList.innerHTML = ''; 
+        
+        const medalIcons = [
+            'assets/icons/medal-1.png',
+            'assets/icons/medal-2.png',
+            'assets/icons/medal-3.png'
+        ];
+
+        rankingData.forEach((player, index) => {
+            const li = document.createElement('li');
+            if (player.id === myUserId) {
+                li.className = 'me';
+            }
+            
+            let posHtml = '';
+            if (index < 3) {
+                posHtml = `<img class="rank-medal" src="${medalIcons[index]}" alt="Medalha">`;
+            } else {
+                // Seu CSS original não tinha um estilo para a posição
+                // Vamos usar a tag <span class="pos"> que existe no HTML original (se houver)
+                // Se não, você pode adicionar este estilo: .pos-number { width: 26px; text-align: center; }
+                posHtml = `<span class="pos-number" style="width:26px; text-align:center; font-weight: 700;">${index + 1}</span>`;
+            }
+            
+            li.innerHTML = `${posHtml}
+                            <img class="rank-photo" src="Foto de Perfil.png" alt="">
+                            <span>${player.name}</span>
+                            <b>${player.score} 🔥</b>`;
+            
+            rankingList.appendChild(li);
+        });
+    }
+
+    // --- 4. FUNÇÃO DE INTERAÇÃO (CLIQUE NO BOTÃO) ---
+    async function incrementStreak() {
+        const statusEl = document.getElementById('status-message');
+        const streakEl = document.getElementById('streak-value');
+        const readsEl = document.getElementById('read-articles-value');
+
+        statusEl.textContent = 'Registrando leitura...';
+        try {
+            const response = await fetch(`${PROFILE_API_URL}/profile/increment`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: USER_ID,
+                    articleId: `artigo-lido-em-${new Date().toISOString()}`
+                }),
+            });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error);
+
+            streakEl.textContent = result.current_streak;
+            readsEl.textContent = result.totalReads;
+            statusEl.textContent = result.status;
+            
+            // Se esta foi a primeira leitura, o usuário agora está "ativo"
+            // Então, trocamos o card de "inativo" pelo de "nível"
+            if(result.totalReads > 0) {
+                 toggleActiveProfile(true); 
+            }
+
+        } catch (error) {
+            console.error('Erro ao registrar leitura:', error);
+            statusEl.textContent = 'Não foi possível conectar à API.';
+        }
+    }
+    
+    // --- 5. FUNÇÃO DE CONTROLE DE EXIBIÇÃO ---
+    function toggleActiveProfile(isLoggedIn, hasActivity) {
+        // O painel do usuário e o ranking só dependem de estar logado
+        document.getElementById('userPanel').style.display = isLoggedIn ? '' : 'none';
+        document.getElementById('rankingList').style.display  = isLoggedIn ? '' : 'none';
+        document.getElementById('rankingEmpty').style.display = isLoggedIn ? 'none' : '';
+
+        // Alterna entre o card de nível e o card de "Comece sua jornada"
+        document.getElementById('levelCard').style.display = hasActivity ? '' : 'none';
+        document.getElementById('perfilInativoCard').style.display = hasActivity ? 'none' : '';
+    }
+
+    // --- 6. FUNÇÃO PRINCIPAL DE CARREGAMENTO ---
+    async function initializeProfile() {
+        try {
+            const response = await fetch(`${PROFILE_API_URL}/profile/${USER_ID}`);
+            if (!response.ok) throw new Error('Falha ao carregar dados do perfil.');
+            
+            const data = await response.json();
+            
+            // Preenche todas as seções com os dados da API
+            renderMetrics(data.metrics);
+            renderUserPanel(data.user, data.leveling.userPoints);
+            renderLevelCard(data.leveling.userPoints);
+            renderRewards(data.rewards.available, data.leveling.userPoints);
+            renderRanking(data.ranking, USER_ID);
+
+            // Decide o que mostrar (Estado Ativo vs. Inativo)
+            const isLoggedIn = true; // A chamada funcionou, então ele está logado
+            const userHasActivity = data.metrics.streakDays > 0 || data.metrics.newsRead > 0;
+            toggleActiveProfile(isLoggedIn, userHasActivity);
+
+        } catch (error) {
+            console.error('Erro ao inicializar o perfil:', error);
+            // Em caso de erro, mostramos o perfil como "inativo"
+            toggleActiveProfile(false, false);
+        }
+    }
+
+    // --- PONTO DE ENTRADA ---
+    document.addEventListener('DOMContentLoaded', initializeProfile);
+
+    // Conecta a função de clique ao botão (se ele existir)
+    const readArticleButton = document.getElementById('read-article-button');
+    if (readArticleButton) {
+        readArticleButton.addEventListener('click', incrementStreak);
+    }
+
 </script>
 </body>
 </html>
