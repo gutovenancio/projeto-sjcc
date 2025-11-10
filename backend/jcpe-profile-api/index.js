@@ -25,27 +25,46 @@ app.get('/profile/:userId', async (req, res) => {
 
     try {
         const [
-            // (Simulação de usuário)
+            // (REAL) Buscar dados do usuário (Nome, Email, etc)
             userData,
-            // Chamada REAL para a API de Streaks
+            // (REAL) Chamada REAL para a API de Streaks
             streakData,
-            // (Simulação de indicações)
+            // (REAL) Buscar indicações
             indicacoesData,
-            // (Simulação de pontos)
+            // (REAL) Buscar pontos
             pontosData,
-            // (Simulação de recompensas)
+            // (REAL) Buscar recompensas
             rewardsData
 
         ] = await Promise.all([
-            Promise.resolve({ data: { id: userId, nome: 'Lucas Oliveira (Teste)', email: 'lucas.teste@email.com', preferencias: ['Política', 'Economia'] } }),
+            // [CORRIGIDO] Chamada real
+            axios.get(`${API.CADASTRO}/api/user/${userId}`).then(res => res.data).catch(() => ({ usuario: { nome: 'Usuário?', email: 'Não encontrado' } })),
+            
             axios.get(`${API.STREAKS}/streak/${userId}`).then(res => res.data).catch(() => ({ current_streak: 0, totalReads: 0 })),
-            Promise.resolve({ total: 5 }), // Simulação
-            Promise.resolve({ data: { balance: 2350 } }), // Simulação
-            Promise.resolve({ data: [] }) // Simulação
-        ]);
+            
+            // [CORRIGIDO] Chamada real
+            axios.get(`${API.INDICACOES}/api/users/${userId}/invites`).then(res => res.data).catch(() => ({ total: 0 })),
 
+            // [CORRIGIDO] Chamada real
+            axios.get(`${API.PONTOS_REWARDS}/points/${userId}`).then(res => res.data).catch((err) => {
+                console.error(`[ERRO Profile-API] Falha ao buscar /points/:${userId}. Erro: ${err.message}`);
+                return { data: { balance: 0 } }; // <-- Adicionado o 'return'
+}),
+            // [CORRIGIDO] Chamada real
+            axios.get(`${API.PONTOS_REWARDS}/rewards`).then(res => res.data).catch(() => ([])) // Retorna array vazio em caso de falha
+        ]);
+   
         const profileData = {
-            user: userData.data,
+            // Vamos montar o objeto 'user' que o frontend espera
+            user: {
+                id: userData.usuario.id,
+                name: userData.usuario.nome,
+                email: userData.usuario.email,
+                
+                // O 'userData.usuario.preferencias' (ou 'prefs') viria da API de cadastro.
+                // Como ainda não vem, vamos garantir um array (simulado ou vazio)
+                prefs: userData.usuario.prefs || ['Política', 'Economia']
+            },
             metrics: {
                 newsRead: streakData.totalReads,
                 streakDays: streakData.current_streak,
@@ -55,7 +74,7 @@ app.get('/profile/:userId', async (req, res) => {
                 userPoints: pontosData.data.balance,
             },
             rewards: {
-                available: rewardsData.data
+                available: rewardsData
             },
             ranking: [] // Simulação
         };
@@ -63,7 +82,7 @@ app.get('/profile/:userId', async (req, res) => {
         res.status(200).json(profileData);
 
     } catch (error) {
-        console.error("[ERRO em /profile]", error);
+        console.error("[ERRO em /profile]", error.message);
         res.status(500).json({ error: "Ocorreu um erro ao consolidar os dados do perfil." });
     }
 });

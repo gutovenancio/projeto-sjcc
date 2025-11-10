@@ -243,11 +243,16 @@
     // --- 3. FUNÇÕES DE RENDERIZAÇÃO (Para preencher a tela) ---
 
     // Esta função preenche os 3 cartões do topo
-    function renderMetrics(metrics) {
-        document.getElementById('read-articles-value').textContent = metrics.newsRead;
-        document.getElementById('streak-value').textContent = metrics.streakDays;
-        document.getElementById('metricReferrals').textContent = metrics.referrals;
-    }
+    function renderMetrics(data) {
+    // CORRIGIDO:
+    // 1. Os IDs corretos são 'metricNews' e 'metricStreak'.
+    // 2. A variável 'data' nesta função JÁ É o objeto 'metrics',
+    //    então acessamos 'data.newsRead' diretamente (e não 'data.metrics.newsRead').
+    
+    document.getElementById('metricNews').textContent = data.newsRead;
+    document.getElementById('metricStreak').textContent = data.streakDays;
+    document.getElementById('metricReferrals').textContent = data.referrals;
+}
 
     // Esta função preenche o painel de usuário
     function renderUserPanel(user, wallet) {

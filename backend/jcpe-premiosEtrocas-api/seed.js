@@ -28,9 +28,9 @@ const pool = require('./db');
     // usuário de teste
     await conn.query(
       'INSERT INTO user_points (user_id, balance) VALUES (?, ?)',
-      ['user-123', 1200]
+      ['1', 1200]
     );
-
+    console.log("--- PROVA: Inserindo usuário '1' com 1200 JCoins ---");
     await conn.commit();
     console.log('Seed OK ✅ (MySQL)');
   } catch (e) {
