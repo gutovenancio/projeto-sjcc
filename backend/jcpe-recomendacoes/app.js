@@ -5,6 +5,8 @@ import rewardsRouter from "./routes/rewards.js";
 import redeemRouter from "./routes/redeem.js";
 import recommendationsRouter from "./routes/recommendations.js";
 import bestRewardsRouter from "./routes/bestRewards.js";
+import userCoinsRouter from "./routes/userCoins.js";
+import userTopTagsRouter from "./routes/userTopTags.js";
 
 
 const app = express();
@@ -16,6 +18,8 @@ app.use("/api", redeemRouter);
 app.use("/api", recommendationsRouter);
 app.use("/api", bestRewardsRouter);
 app.get("/health", (req, res) => res.json({ ok: true }));
+app.use("/api", userCoinsRouter);
+app.use("/api", userTopTagsRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
