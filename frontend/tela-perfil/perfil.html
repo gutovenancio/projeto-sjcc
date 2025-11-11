@@ -43,13 +43,20 @@
           <div class="mini-value" id="metricStreak">0</div>
           <div class="mini-label">dias de streak</div>
         </div>
+        
         <div class="mini-stat">
           <img src="assets/icons/indicaçoes.png" class="mini-icon-img" alt="">
           <div class="mini-value" id="metricReferrals">0</div>
           <div class="mini-label">indicações</div>
         </div>
       </div>
-
+      <div style="padding: 10px; background: #fff8e0; border: 1px solid #e6dbb9; text-align: center; margin: 16px 0; border-radius: 8px;">
+                  <strong>Área de Teste (API de Streak):</strong>
+                  <button id="read-article-button" type="button" style="padding: 5px 10px; margin-left: 10px; cursor: pointer;">
+                      Simular Leitura de Artigo
+                  </button>
+                  <span id="status-message" style="margin-left: 10px;"></span>
+        </div>
       <section class="level-card perfil-ativo-only" id="levelCard">
         <div class="level-header">
           <span id="levelLabel">Nível 1</span>
@@ -287,27 +294,117 @@
 
     // Esta função preenche a lista de recompensas
     function renderRewards(rewards, userPoints) {
-        document.querySelectorAll('#rewardsList .reward').forEach(item => {
-            const priceBRL = Number(item.getAttribute('data-price-brl') || 0);
-            const costPts  = Math.round(priceBRL * POINTS_PER_BRL);
-            const numberEl = item.querySelector('.jcoin-value');
-            const statusEl = item.querySelector('.status');
-            const btn      = item.querySelector('.redeem-btn');
+        
+        // Guarda as recompensas globalmente para que a função de resgate possa re-renderizar
+        window.cachedRewards = rewards; 
+        
+        const rewardsList = document.getElementById('rewardsList');
+        rewardsList.innerHTML = ''; // Limpa a lista para desenhar os dados reais
 
-            if (numberEl) numberEl.textContent = costPts;
+        if (!rewards || rewards.length === 0) {
+            rewardsList.innerHTML = '<li>Nenhuma recompensa disponível no momento.</li>';
+            return;
+        }
 
-            if (userPoints >= costPts) {
-                item.classList.add('can-redeem');
-                statusEl.textContent = 'Disponível';
-                btn.disabled = false;
+        rewards.forEach(reward => {
+            // Ignora recompensas inativas ou sem custo
+            if (!reward.is_active || !reward.cost_points) return;
+
+            const costPts = reward.cost_points;
+            const canAfford = userPoints >= costPts;
+
+            const li = document.createElement('li');
+            li.className = 'reward';
+            li.classList.toggle('can-redeem', canAfford);
+            li.classList.toggle('locked', !canAfford);
+
+            // Determina o status para exibir
+            let statusText = '';
+            if (canAfford) {
+                statusText = (reward.stock !== null) ? `${reward.stock} em estoque` : 'Disponível';
             } else {
-                item.classList.add('locked');
-                statusEl.textContent = `Faltam ${costPts - userPoints} JCoins`;
-                btn.disabled = true;
+                statusText = `Faltam ${costPts - userPoints} JCoins`;
             }
-        });
-    }
 
+            const logoUrl = `assets/Rewards/${reward.title.split(' ')[0]}.png`; // Tenta adivinhar o logo
+
+            li.innerHTML = `
+              <div class="reward-info">
+                <img src="${logoUrl}" class="reward-logo" alt="" style="background-color: #f0f0f0;">
+                <div>
+                  <h4>${reward.title}</h4>
+                  <p>${reward.description}</p>
+                </div>
+              </div>
+              <div class="reward-cta">
+                <span class="price-line">
+                  <b class="jcoin-value">${costPts}</b> <span class="jcoin-label">JCoins</span>
+                </span>
+                <span class="badge status">${statusText}</span>
+                <button class="redeem-btn" type="button" ${!canAfford ? 'disabled' : ''}>Resgatar</button>
+              </div>
+            `;
+            // Adiciona o listener de clique no botão que acabamos de criar
+            const btn = li.querySelector('.redeem-btn');
+            if (canAfford) {
+                // Passa o ID real e o custo real para a função de resgate
+                btn.onclick = () => redeemReward(reward.id, costPts);
+            }
+
+            rewardsList.appendChild(li);
+        });
+        
+    }
+    async function redeemReward(rewardId, cost) {
+        if (!confirm(`Resgatar este item por ${cost} JCoins?`)) {
+            return; // Usuário cancelou
+        }
+        
+        // Mostra um feedback visual que está carregando
+        const btn = event.target; // Pega o botão que foi clicado
+        btn.disabled = true;
+        btn.textContent = 'Aguarde...';
+
+        try {
+            // Chama DIRETAMENTE a API de Prêmios (porta 3003)
+            const response = await fetch(`http://localhost:3003/redeem`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: USER_ID.toString(), // A API de prêmios espera o ID como string
+                    rewardId: rewardId,
+                    quantity: 1
+                }),
+            });
+
+            const result = await response.json();
+            if (!response.ok) {
+                // Se a API retornar um erro (ex: 'insufficient_points'), mostra ele
+                throw new Error(result.error || 'Erro desconhecido');
+            }
+
+            alert('Recompensa resgatada com sucesso!');
+
+            // --- ATUALIZA A TELA EM TEMPO REAL ---
+            
+            // 1. Atualiza o saldo (carteira)
+            document.getElementById('walletCoins').textContent = `${result.balanceAfter.toLocaleString('pt-BR')} jcoins`;
+            
+            // 2. Atualiza o card de Nível (barra de progresso)
+            renderLevelCard(result.balanceAfter);
+            
+            // 3. Re-desenha a lista de recompensas com o novo saldo
+            // (Isso vai desabilitar botões que o usuário não pode mais comprar)
+            renderRewards(window.cachedRewards || [], result.balanceAfter);
+
+        } catch (error) {
+            console.error('Erro ao resgatar recompensa:', error);
+            alert(`Erro ao resgatar: ${error.message}`);
+            // Devolve o botão ao estado normal se der erro
+            btn.disabled = false;
+            btn.textContent = 'Resgatar';
+        }
+    }
     // Esta função preenche o ranking
     function renderRanking(rankingData, myUserId) {
         const rankingList = document.getElementById('rankingList');
@@ -347,35 +444,34 @@
     // --- 4. FUNÇÃO DE INTERAÇÃO (CLIQUE NO BOTÃO) ---
     async function incrementStreak() {
         const statusEl = document.getElementById('status-message');
-        const streakEl = document.getElementById('streak-value');
-        const readsEl = document.getElementById('read-articles-value');
+        
+        // IDs CORRIGIDOS:
+        const streakEl = document.getElementById('metricStreak'); 
+        const readsEl = document.getElementById('metricNews');
 
         statusEl.textContent = 'Registrando leitura...';
         try {
-            const response = await fetch(`${PROFILE_API_URL}/profile/increment`, {
+            // Chama DIRETAMENTE a API de Streak (porta 3000)
+            const response = await fetch(`http://localhost:3000/streak/increment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: USER_ID,
-                    articleId: `artigo-lido-em-${new Date().toISOString()}`
+                    userId: USER_ID, // A constante USER_ID = 1 que já existe no seu script
+                    articleId: `artigo-teste-${new Date().toISOString()}`
                 }),
             });
+            
             const result = await response.json();
             if (!response.ok) throw new Error(result.error);
 
+            // Atualiza os números na tela na hora!
             streakEl.textContent = result.current_streak;
             readsEl.textContent = result.totalReads;
             statusEl.textContent = result.status;
-            
-            // Se esta foi a primeira leitura, o usuário agora está "ativo"
-            // Então, trocamos o card de "inativo" pelo de "nível"
-            if(result.totalReads > 0) {
-                 toggleActiveProfile(true); 
-            }
 
         } catch (error) {
             console.error('Erro ao registrar leitura:', error);
-            statusEl.textContent = 'Não foi possível conectar à API.';
+            statusEl.textContent = 'Não foi possível conectar à API de Streak.';
         }
     }
     
