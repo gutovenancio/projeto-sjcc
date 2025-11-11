@@ -43,7 +43,7 @@ app.get('/profile/:userId', async (req, res) => {
             axios.get(`${API.STREAKS}/streak/${userId}`).then(res => res.data).catch(() => ({ current_streak: 0, totalReads: 0 })),
             
             // [CORRIGIDO] Chamada real
-            axios.get(`${API.INDICACOES}/api/users/${userId}/invites`).then(res => res.data).catch(() => ({ total: 0 })),
+            axios.get(`${API.INDICACOES}/api/users/${userId}/invites`).then(res => res.data).catch(() => ({ total: 0, totalUtilizadas: 0 })),
 
             // [CORRIGIDO] Chamada real
             axios.get(`${API.PONTOS_REWARDS}/points/${userId}`).then(res => res.data).catch((err) => {
@@ -68,7 +68,7 @@ app.get('/profile/:userId', async (req, res) => {
             metrics: {
                 newsRead: streakData.totalReads,
                 streakDays: streakData.current_streak,
-                referrals: indicacoesData.total,
+                referrals: indicacoesData.totalUtilizadas,
             },
             leveling: {
                 userPoints: pontosData.data.balance,

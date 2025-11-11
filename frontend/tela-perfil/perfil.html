@@ -57,6 +57,20 @@
                   </button>
                   <span id="status-message" style="margin-left: 10px;"></span>
         </div>
+         <div style="padding: 10px; background: #e0f0ff; border: 1px solid #b3d4f0; text-align: center; margin: 16px 0; border-radius: 8px;">
+        <strong>Área de Teste (API de Indicação):</strong>
+        <button id="generate-invite-btn" type="button" style="padding: 5px 10px; margin: 0 10px; cursor: pointer;">
+            1. Gerar meu Link de Convite
+        </button>
+        <div id="invite-link-area" style="margin-top: 10px; display: none;">
+            <span style="font-weight: bold;">Link Gerado:</span>
+            <input type="text" id="generated-link-input" readonly style="width: 200px; padding: 4px;">
+            <button id="use-invite-btn" type="button" style="padding: 5px 10px; margin-left: 10px; cursor: pointer; background: #28a745; color: white; border: 0;">
+                2. Simular Cadastro do Amigo
+            </button>
+        </div>
+        <span id="invite-status" style="margin-left: 10px; font-size: 14px;"></span>
+        </div>
       <section class="level-card perfil-ativo-only" id="levelCard">
         <div class="level-header">
           <span id="levelLabel">Nível 1</span>
@@ -73,6 +87,7 @@
             <span class="level-hint-left" id="nextLevelHint">Chegue em 0 pontos para conseguir o próximo nível</span>
           </div>
         </div>
+       
       </section>
 
       <section class="perfil-inativo" id="perfilInativoCard" style="display:none;">
@@ -231,12 +246,13 @@
 <script>
   // --- INÍCIO DO CÓDIGO DE INTEGRAÇÃO DA API ---
 
-// --- 1. CONFIGURAÇÃO ---
+// ---  CONFIGURAÇÃO ---
     const USER_ID = 1; // Em um sistema real, este ID viria do sistema de login.
     const PROFILE_API_URL = 'http://localhost:4000'; // Nosso endpoint agregador!
     const POINTS_PER_BRL = 20; 
+    const PONTOS_POR_INDICACAO = 50
 
-    // --- 2. FUNÇÕES DE LÓGICA DE CÁLCULO (Reutilizadas) ---
+    // ---  FUNÇÕES DE LÓGICA DE CÁLCULO (Reutilizadas) ---
     function pointsForLevel(level) {
         if (level <= 1) return 0;
         return 50 * Math.pow(2, level - 2);
@@ -247,7 +263,7 @@
         return level;
     }
     
-    // --- 3. FUNÇÕES DE RENDERIZAÇÃO (Para preencher a tela) ---
+    // ---  FUNÇÕES DE RENDERIZAÇÃO (Para preencher a tela) ---
 
     // Esta função preenche os 3 cartões do topo
     function renderMetrics(data) {
@@ -353,7 +369,7 @@
 
             rewardsList.appendChild(li);
         });
-        
+
     }
     async function redeemReward(rewardId, cost) {
         if (!confirm(`Resgatar este item por ${cost} JCoins?`)) {
@@ -441,7 +457,7 @@
         });
     }
 
-    // --- 4. FUNÇÃO DE INTERAÇÃO (CLIQUE NO BOTÃO) ---
+    // ---  FUNÇÃO DE INTERAÇÃO (CLIQUE NO BOTÃO) ---
     async function incrementStreak() {
         const statusEl = document.getElementById('status-message');
         
@@ -475,7 +491,7 @@
         }
     }
     
-    // --- 5. FUNÇÃO DE CONTROLE DE EXIBIÇÃO ---
+    // ---  FUNÇÃO DE CONTROLE DE EXIBIÇÃO ---
     function toggleActiveProfile(isLoggedIn, hasActivity) {
         // O painel do usuário e o ranking só dependem de estar logado
         document.getElementById('userPanel').style.display = isLoggedIn ? '' : 'none';
@@ -487,7 +503,7 @@
         document.getElementById('perfilInativoCard').style.display = hasActivity ? 'none' : '';
     }
 
-    // --- 6. FUNÇÃO PRINCIPAL DE CARREGAMENTO ---
+    // ---  FUNÇÃO PRINCIPAL DE CARREGAMENTO ---
     async function initializeProfile() {
         try {
             const response = await fetch(`${PROFILE_API_URL}/profile/${USER_ID}`);
@@ -515,14 +531,101 @@
     }
 
     // --- PONTO DE ENTRADA ---
-    document.addEventListener('DOMContentLoaded', initializeProfile);
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Carrega todos os dados do perfil assim que a página abre
+        initializeProfile();
 
-    // Conecta a função de clique ao botão (se ele existir)
-    const readArticleButton = document.getElementById('read-article-button');
-    if (readArticleButton) {
-        readArticleButton.addEventListener('click', incrementStreak);
+        // 2. Conecta o botão de teste de STREAK
+        const readArticleButton = document.getElementById('read-article-button');
+        if (readArticleButton) {
+            readArticleButton.addEventListener('click', incrementStreak);
+        }
+
+        // 3. Conecta os botões de teste de INDICAÇÃO (O melhor lugar é aqui!)
+        const inviteButton = document.getElementById('generate-invite-btn');
+        const useButton = document.getElementById('use-invite-btn');
+        if (inviteButton) {
+            inviteButton.addEventListener('click', generateInvite);
+        }
+        if (useButton) {
+            useButton.addEventListener('click', useInvite);
+        }
+    });
+ // ---  FUNÇÕES DE INTERAÇÃO (GERAR E USAR CONVITE) ---
+let generatedInviteCode = null; // Guarda o código entre os cliques
+
+async function generateInvite() {
+    const btn = document.getElementById('generate-invite-btn');
+    const statusEl = document.getElementById('invite-status');
+
+    btn.disabled = true;
+    statusEl.textContent = 'Gerando...';
+
+    try {
+        const response = await fetch(`http://localhost:3002/api/invite/generate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idUsuario: USER_ID, descricao: "Teste do Perfil" }),
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error);
+
+        generatedInviteCode = result.data.codigoUnico; // Salva o código
+
+        // Mostra a segunda etapa do teste
+        document.getElementById('invite-link-area').style.display = 'block';
+        document.getElementById('generated-link-input').value = result.data.link;
+        statusEl.textContent = 'Link gerado! Agora clique em "Simular Cadastro".';
+
+    } catch (error) {
+        console.error('Erro ao gerar convite:', error);
+        statusEl.textContent = `Erro ao gerar: ${error.message}`;
+        btn.disabled = false;
+    }
+}
+
+async function useInvite() {
+    const btn = document.getElementById('use-invite-btn');
+    const statusEl = document.getElementById('invite-status');
+
+    if (!generatedInviteCode) {
+        statusEl.textContent = 'Gere um link primeiro.';
+        return;
     }
 
+    btn.disabled = true;
+    statusEl.textContent = 'Simulando cadastro do amigo...';
+
+    try {
+        // Chama o endpoint que MARCA O CÓDIGO COMO USADO
+        const response = await fetch(`http://localhost:3002/api/invite/use/${generatedInviteCode}`, {
+            method: 'POST'
+        });
+
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error);
+
+        statusEl.textContent = `Sucesso! Você ganhou ${PONTOS_POR_INDICACAO} JCoins! Recarregando...`;
+
+        // Espera 2 segundos para o usuário ler a mensagem
+        setTimeout(async () => {
+            // Recarrega todo o perfil
+            await initializeProfile(); 
+
+            // Reseta a simulação
+            statusEl.textContent = '';
+            document.getElementById('invite-link-area').style.display = 'none';
+            document.getElementById('generate-invite-btn').disabled = false;
+            btn.disabled = false;
+            generatedInviteCode = null;
+        }, 2000); // 2 segundos de delay
+
+    } catch (error) {
+        console.error('Erro ao usar convite:', error);
+        statusEl.textContent = `Erro ao usar: ${error.message}`;
+        btn.disabled = false;
+    }
+}
 </script>
 </body>
 </html>
