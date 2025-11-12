@@ -1,4 +1,3 @@
-// src/controllers/cadastro.controller.js
 const usuarioService = require('../services/usuarioService');
 
 module.exports = {
@@ -23,7 +22,7 @@ module.exports = {
 
     } catch (error) {
       console.error('Erro no controller:', error);
-      
+
       if (error.message === 'Email já cadastrado.') {
         return res.status(409).json({ error: error.message });
       }
