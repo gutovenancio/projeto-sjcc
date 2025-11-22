@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Recompensas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER DO JCPE -->
+    <header class="jc-header">
+      <div class="jc-header-inner">
+        <!-- Logo central -->
+        <img
+          src="assets/brand/Símbolo Jc.png"
+          alt="Logo JCPE"
+          class="jc-logo"
+        />
+
+        <!-- Ações (direita) -->
+        <div class="jc-actions">
+          <img
+            src="assets/brand/avatar.png"
+            alt="Foto do usuário"
+            class="jc-avatar"
+          />
+          <img
+            src="assets/icons/lupa.png"
+            alt="Buscar"
+            class="jc-icon"
+          />
+          <img
+            src="assets/icons/menu.png"
+            alt="Menu"
+            class="jc-icon"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main class="reward-page">
+      <!-- HERO / TÍTULO + SALDO -->
+      <section class="reward-hero">
+        <div class="reward-hero__title-block">
+          <h1 class="reward-hero__title">RECOMPENSAS</h1>
+          <div class="reward-hero__underline"></div>
+          <p class="reward-hero__subtitle">
+            Acumule JCoins e troque por benefícios exclusivos e variados
+          </p>
+        </div>
+
+        <div class="reward-balance-card">
+          <div class="reward-balance-card__icon">
+            <img src="assets/icons/carteira.png" alt="Carteira" />
+          </div>
+
+          <div class="reward-balance-card__value">
+            500
+          </div>
+          <div class="reward-balance-card__label">
+            JCoins
+          </div>
+        </div>
+      </section>
+
+      <!-- MELHORES RECOMPENSAS -->
+      <section class="reward-section">
+        <h2 class="section-title">Melhores recompensas</h2>
+
+        <div id="bestRewardsGrid" class="reward-grid">
+          <!-- 1. Amazon Prime -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/prime video.png"
+                alt="Amazon Prime"
+              />
+            </div>
+            <h3 class="reward-card-title">Amazon Prime</h3>
+            <p class="reward-card-description">
+              1 mês com frete grátis e Prime Video
+            </p>
+            <span class="reward-card-cost">700 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 2. Cupom iFood -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/ifood.png"
+                alt="iFood"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom iFood</h3>
+            <p class="reward-card-description">
+              R$ 15 de desconto no seu pedido
+            </p>
+            <span class="reward-card-cost">600 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 3. Milhas Smiles -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/Smiles.png"
+                alt="Smiles"
+              />
+            </div>
+            <h3 class="reward-card-title">Milhas no Smiles</h3>
+            <p class="reward-card-description">
+              1000 milhas para suas viagens
+            </p>
+            <span class="reward-card-cost">1600 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 4. Spotify Premium -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/spotify.png"
+                alt="Spotify Premium"
+              />
+            </div>
+            <h3 class="reward-card-title">Spotify Premium</h3>
+            <p class="reward-card-description">
+              1 mês para ouvir música sem anúncios
+            </p>
+            <span class="reward-card-cost">900 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 5. Caneca SJCC -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/Caneca JC.png"
+                alt="Caneca SJCC"
+              />
+            </div>
+            <h3 class="reward-card-title">Caneca do JC</h3>
+            <p class="reward-card-description">
+              Edição especial do Jornal do Commercio
+            </p>
+            <span class="reward-card-cost">200 JCoins</span>
+            <button class="reward-button">Resgatar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TODAS AS RECOMPENSAS -->
+      <section class="reward-section">
+        <div class="section-header">
+          <h2 class="section-title">Todas as recompensas</h2>
+        </div>
+
+        <div id="allRewardsGrid" class="reward-grid">
+          <!-- ============ VISÍVEIS INICIALMENTE ============ -->
+
+          <!-- 1. Amazon Prime (repete das melhores) -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/prime video.png"
+                alt="Amazon Prime"
+              />
+            </div>
+            <h3 class="reward-card-title">Amazon Prime</h3>
+            <p class="reward-card-description">
+              1 mês com frete grátis e Prime Video
+            </p>
+            <span class="reward-card-cost">700 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 2. Cupom iFood -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/ifood.png"
+                alt="iFood"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom iFood</h3>
+            <p class="reward-card-description">
+              R$ 15 de desconto no seu pedido
+            </p>
+            <span class="reward-card-cost">600 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 3. Milhas Smiles -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/Smiles.png"
+                alt="Smiles"
+              />
+            </div>
+            <h3 class="reward-card-title">Milhas no Smiles</h3>
+            <p class="reward-card-description">
+              1000 milhas para suas viagens
+            </p>
+            <span class="reward-card-cost">1600 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 4. Spotify Premium -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/spotify.png"
+                alt="Spotify Premium"
+              />
+            </div>
+            <h3 class="reward-card-title">Spotify Premium</h3>
+            <p class="reward-card-description">
+              1 mês para ouvir música sem anúncios
+            </p>
+            <span class="reward-card-cost">900 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 5. Caneca do JC (DISPONÍVEL) -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/Caneca JC.png"
+                alt="Caneca do JC"
+              />
+            </div>
+            <h3 class="reward-card-title">Caneca do JC</h3>
+            <p class="reward-card-description">
+              Edição especial do Jornal do Commercio
+            </p>
+            <span class="reward-card-cost">200 JCoins</span>
+            <button class="reward-button">Resgatar</button>
+          </div>
+
+          <!-- 6. Cupom Uber -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/uber.png"
+                alt="Uber"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom Uber</h3>
+            <p class="reward-card-description">
+              R$ 30 para suas corridas
+            </p>
+            <span class="reward-card-cost">900 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 7. Cupom Amazon R$ 10 -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/amazon.png"
+                alt="Amazon"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom Amazon</h3>
+            <p class="reward-card-description">
+              R$ 10 de desconto em compras
+            </p>
+            <span class="reward-card-cost">600 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 8. Cupom Burger King (DISPONÍVEL) -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/burguer king.png"
+                alt="Burger King"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom Burger King</h3>
+            <p class="reward-card-description">
+              R$ 10 de desconto no lanche
+            </p>
+            <span class="reward-card-cost">400 JCoins</span>
+            <button class="reward-button">Resgatar</button>
+          </div>
+
+          <!-- 9. Cupom Subway (DISPONÍVEL) -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/subway.png"
+                alt="Subway"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom Subway</h3>
+            <p class="reward-card-description">
+              R$ 10 de desconto no sanduíche
+            </p>
+            <span class="reward-card-cost">400 JCoins</span>
+            <button class="reward-button">Resgatar</button>
+          </div>
+
+          <!-- 10. Ingresso de Cinema -->
+          <div class="reward-card">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/cinema.png"
+                alt="Ingresso de cinema"
+              />
+            </div>
+            <h3 class="reward-card-title">Ingresso de cinema</h3>
+            <p class="reward-card-description">
+              1 ingresso em rede parceira
+            </p>
+            <span class="reward-card-cost">700 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- ============ RECOMPENSAS EXTRA (APARECEM NO VER MAIS) ============ -->
+
+          <!-- 11. Vale-livros -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/livraria.png"
+                alt="Vale-livros"
+              />
+            </div>
+            <h3 class="reward-card-title">Vale-livros</h3>
+            <p class="reward-card-description">
+              R$ 30 em livraria online
+            </p>
+            <span class="reward-card-cost">950 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 12. Globoplay -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/globoplay.png"
+                alt="Globoplay"
+              />
+            </div>
+            <h3 class="reward-card-title">Globoplay</h3>
+            <p class="reward-card-description">
+              1 mês para maratonar suas séries
+            </p>
+            <span class="reward-card-cost">800 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 13. Combo Disney+ -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/disney+.jpeg"
+                alt="Disney+"
+              />
+            </div>
+            <h3 class="reward-card-title">Combo Disney+</h3>
+            <p class="reward-card-description">
+              1 mês para assistir conteúdos Disney, Star e ESPN
+            </p>
+            <span class="reward-card-cost">1100 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 14. Cupom 99 -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/99.jpeg"
+                alt="99"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom 99</h3>
+            <p class="reward-card-description">
+              R$ 20 de desconto nas corridas
+            </p>
+            <span class="reward-card-cost">750 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 15. LATAM Pass -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/latam.jpeg"
+                alt="LATAM Pass"
+              />
+            </div>
+            <h3 class="reward-card-title">Pontos LATAM Pass</h3>
+            <p class="reward-card-description">
+              700 pontos para suas viagens
+            </p>
+            <span class="reward-card-cost">1200 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 16. TudoAzul -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/tudo-azul.png"
+                alt="TudoAzul"
+              />
+            </div>
+            <h3 class="reward-card-title">Pontos TudoAzul</h3>
+            <p class="reward-card-description">
+              700 pontos para voar mais
+            </p>
+            <span class="reward-card-cost">1100 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 17. Curso Udemy -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/udemy.png"
+                alt="Udemy"
+              />
+            </div>
+            <h3 class="reward-card-title">Cupom Udemy</h3>
+            <p class="reward-card-description">
+              50% em cursos selecionados
+            </p>
+            <span class="reward-card-cost">800 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+
+          <!-- 18. Curso de redação -->
+          <div class="reward-card extra-reward hidden">
+            <div class="reward-img-wrapper">
+              <img
+                src="assets/rewards/curso-redacao.jpeg"
+                alt="Curso de redação"
+              />
+            </div>
+            <h3 class="reward-card-title">Acesso Premium</h3>
+            <p class="reward-card-description">
+              30 dias em plataforma de redação
+            </p>
+            <span class="reward-card-cost">900 JCoins</span>
+            <button class="reward-button disabled">Indisponível</button>
+          </div>
+        </div>
+
+        <!-- Botão "Ver mais / Ver menos" -->
+        <div class="see-more-wrapper">
+          <button id="toggleRewards" class="see-more-button">Ver mais</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
