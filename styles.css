@@ -1,0 +1,287 @@
+/* -------- RESET -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #111;
+  padding: 0;
+}
+
+/* =============================== */
+/* HEADER SUPERIOR DO JCPE         */
+/* =============================== */
+
+.jc-header {
+  width: 100%;
+  background: #ffffff;
+  padding: 4px 14px; /* igual ao perfil */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 64px; /* padronizado igual ao perfil */
+  display: flex;
+  align-items: center;
+}
+
+.jc-header-inner {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* mantém o logo no meio */
+}
+
+.jc-logo {
+  width: 60px;
+  height: auto;
+}
+
+.jc-actions {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.jc-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.jc-icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* =============================== */
+/* ÁREA PRINCIPAL DA TELA          */
+/* =============================== */
+
+.reward-page {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  padding: 48px 16px 60px;
+}
+
+/* Centraliza tudo */
+.reward-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* -------- TÍTULO RECOMPENSAS -------- */
+
+.reward-hero__title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.reward-hero__underline {
+  width: 60px;
+  height: 3px;
+  background-color: #d60000;
+  margin: 0 auto 10px;
+}
+
+.reward-hero__subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* -------- CARD DE SALDO -------- */
+
+.reward-balance-card {
+  margin: 20px auto 0;
+  width: 230px;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px 28px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.reward-balance-card__icon img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Valor "500" */
+.reward-balance-card__value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+/* Texto "JCOINS" */
+.reward-balance-card__label {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #444;
+}
+
+/* -------- SEÇÕES (Melhores / Todas) -------- */
+
+.reward-section {
+  max-width: 1200px;
+  margin: 40px auto 32px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: #d60000;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* -------- GRID DE CARDS -------- */
+
+.reward-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+/* -------- CARD -------- */
+
+.reward-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 230px;
+  transition: all 0.2s ease; /* animação suave */
+}
+
+/* HOVER — como você deixou */
+.reward-card:not(.disabled-card):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Botão quando pode resgatar */
+.reward-button:hover:not(.disabled) {
+  background-color: #b80000;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.reward-img-wrapper {
+  height: 60px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reward-img-wrapper img {
+  max-height: 60px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.reward-card-title {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.reward-card-description {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.reward-card-cost {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #d60000; /* custo em vermelho */
+}
+
+/* -------- BOTÕES -------- */
+
+.reward-button {
+  background-color: #d60000;
+  color: #ffffff;
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.reward-button.disabled {
+  background-color: #b8b8b8;
+  cursor: not-allowed;
+}
+
+/* Esconde recompensas extras até clicar em "Ver mais" */
+.hidden {
+  display: none;
+}
+
+/* Contêiner do botão "Ver mais / Ver menos" */
+.see-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Botão "Ver mais" / "Ver menos" */
+.see-more-button {
+  padding: 8px 26px;
+  border-radius: 999px;
+  border: 1px solid #d60000;
+  background-color: #ffffff;
+  color: #d60000;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.see-more-button:hover {
+  background-color: #d60000;
+  color: #ffffff;
+}
