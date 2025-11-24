@@ -100,6 +100,10 @@ Ele foi elaborado para demonstrar de forma visual como as ações do usuário se
 Fizemos nossa prototipação lo-fi por meio do Figma, traduzindo bem nossa ideia para algo mais simples e fácil de assimilar
 - [Protopação Lo-Fi](https://www.figma.com/board/W0RYzOMUy0OIylgtdrFQ3c/Quadro-Geral?node-id=488-3699&p=f&t=5smKvGZQzuXuZdXC-0)
 
+## 🎨 Protótipo de Alta Fidelidade
+
+Você pode acessar o protótipo completo no Figma pelo link abaixo:
+- [Protótipo de Alta Fidelidade](https://www.figma.com/design/ZEZf2teRBPhqzHGsZHWqdG/Prot%C3%B3tipo-JC?node-id=609-822&t=4RhmIfShtGUnUUXG-1)
 
 ### Sketchs e Storyboards
 

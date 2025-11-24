@@ -6,14 +6,12 @@ const prisma = new PrismaClient();
 class UsuarioService {
   async criarUsuario(dadosUsuario) {
     try {
-      // criar instância do domínio
       const usuario = await Usuario.criar(
         dadosUsuario.nome,
         dadosUsuario.email,
         dadosUsuario.senha
       );
 
-      // verificar regra de negócio: email único
       const usuarioExistente = await prisma.usuario.findUnique({
         where: { email: usuario.email },
       });
@@ -22,7 +20,7 @@ class UsuarioService {
         throw new Error('Email já cadastrado.');
       }
 
-      // persistir no banco
+      
       const usuarioSalvo = await prisma.usuario.create({
         data: {
           nome: usuario.nome,
@@ -32,7 +30,6 @@ class UsuarioService {
         },
       });
 
-      // atualizar a instância do domínio com o ID gerado
       usuario.id = usuarioSalvo.id;
 
       return usuario;
