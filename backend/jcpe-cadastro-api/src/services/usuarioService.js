@@ -55,6 +55,22 @@ class UsuarioService {
     );
 
   }
+  async buscarPorId(id) {
+    const usuarioDB = await prisma.usuario.findUnique({
+      where: { id: id },
+    });
+
+    if (!usuarioDB) return null;
+
+    // Re-usa o model de domínio
+    return new Usuario(
+        usuarioDB.id,
+        usuarioDB.nome,
+        usuarioDB.email,
+        usuarioDB.senha, // (senhaHash)
+        usuarioDB.criadoEm
+    );
+  }
 }
 
 module.exports = new UsuarioService();

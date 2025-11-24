@@ -36,4 +36,21 @@ module.exports = {
       return res.status(500).json({ error: "Erro interno do servidor." });
     }
   },
+  async buscarUsuario(req, res) {
+    try {
+      const { id } = req.params;
+      // Converte o ID da URL para número
+      const usuario = await usuarioService.buscarPorId(parseInt(id, 10));
+  
+      if (!usuario) {
+        return res.status(404).json({ error: "Usuário não encontrado." });
+      }
+      
+      return res.status(200).json({ usuario: usuario.toJSON() });
+    } catch (error) {
+      console.error('Erro no controller (buscarUsuario):', error);
+      return res.status(500).json({ error: "Erro interno do servidor." });
+    }
+  }
+  
 };

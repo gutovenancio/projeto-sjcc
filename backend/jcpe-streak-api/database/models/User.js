@@ -1,0 +1,16 @@
+const { DataTypes } = require('sequelize');
+const sequelize = require('../connection'); // Importa a conexão
+
+const User = sequelize.define('User', {
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  timezone: {
+    type: DataTypes.STRING,
+    defaultValue: 'America/Recife'
+  }
+});
+
+module.exports = User;

@@ -122,5 +122,76 @@ if (reward.stock !== null) {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+app.get('/points/:userId', async (req, res) => {
+  const { userId } = req.params;
+  
+  // Log para sabermos que a API foi chamada
+  console.log(`[GET /points] Recebida consulta para o userId: ${userId}`);
+  
+  const conn = await pool.getConnection(); 
+  try {
+    
+    // a ensureUser já existe no seu server.js
+    await ensureUser(conn, userId); 
+    
+    const [rows] = await conn.query(
+      'SELECT balance FROM user_points WHERE user_id = ?',
+      [userId]
+    );
+    
+    const balance = rows[0]?.balance ?? 0; 
+    
+    // Log para sabermos o que o banco respondeu
+    console.log(`[GET /points] Saldo encontrado no banco: ${balance}`);
+    
+    res.json({ data: { balance: balance } }); 
+
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'internal_error' });
+  } finally {
+    if (conn) conn.release();
+  }
+});
+app.post('/points/add', async (req, res) => {
+  const { userId, points, reason } = req.body;
+
+  if (!userId || !points) {
+    return res.status(400).json({ error: 'userId e points são obrigatórios' });
+  }
+
+  const conn = await pool.getConnection();
+  try {
+    await conn.beginTransaction();
+
+    // Garante que o usuário exista no banco de pontos
+    await ensureUser(conn, userId);
+
+    // Adiciona os pontos
+    await conn.query(
+      'UPDATE user_points SET balance = balance + ? WHERE user_id = ?',
+      [points, userId]
+    );
+
+    await conn.commit();
+
+    // Pega o saldo final para retornar
+    const [rows] = await conn.query('SELECT balance FROM user_points WHERE user_id = ?', [userId]);
+
+    console.log(`[POST /points/add] Creditado ${points} JCoins para userId: ${userId}. Motivo: ${reason || 'N/A'}. Novo Saldo: ${rows[0].balance}`);
+
+    res.status(200).json({ 
+      success: true, 
+      newBalance: rows[0].balance 
+    });
+
+  } catch (e) {
+    await conn.rollback();
+    console.error('[ERRO em /points/add]', e);
+    res.status(500).json({ error: 'internal_error' });
+  } finally {
+    conn.release();
+  }
+});
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`API rodando em http://localhost:${PORT}`));

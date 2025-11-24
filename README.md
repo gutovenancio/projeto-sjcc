@@ -161,4 +161,4 @@ Melhor entendimento coletivo da arquitetura do sistema;
 Entregas mais consistentes e alinhadas ao protótipo Lo-Fi.
 
 > O pair programming foi essencial para fortalecer o trabalho em equipe e aprimorar o aprendizado mútuo dentro do time.
-![b45d2696-382b-4b0a-b881-66226d059609](https://github.com/user-attachments/assets/a5bd2bd4-f569-4435-b99e-e58b86f54ed3)
+![b45d2696-382b-4b0a-b881-66226d059609](https://github.com/user-attachments/assets/a5bd2bd4-f569-4435-b99e-e58b86f54ed3).

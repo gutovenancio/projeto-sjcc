@@ -4,8 +4,13 @@ import {
     buscarPorCodigo, 
     marcarComoUtilizada, 
     listarPorUsuario, 
-    verificarLimiteUsuario 
+    verificarLimiteUsuario,
+    marcarComoExpirada
 } from '../models/indicacao.js';
+import axios from 'axios';
+
+const PREMIOS_API_URL = process.env.PREMIOS_API_URL || 'http://localhost:3003';
+const PONTOS_POR_INDICACAO = 50;
 
 export const gerarConvite = async (req, res) => {
     try {
@@ -109,27 +114,32 @@ export const utilizarIndicacao = async (req, res) => {
         const indicacao = await buscarPorCodigo(codigo);
 
         if (!indicacao) {
-            return res.status(404).json({ 
-                success: false,
-                error: 'Código de indicação inválido' 
-            });
+            return res.status(404).json({ success: false, error: 'Código de indicação inválido' });
         }
-
         if (indicacao.expirado) {
-            return res.status(400).json({ 
-                success: false,
-                error: 'Esta indicação expirou' 
-            });
+            return res.status(400).json({ success: false, error: 'Esta indicação expirou' });
         }
-
         if (indicacao.utilizado) {
-            return res.status(400).json({ 
-                success: false,
-                error: 'Esta indicação já foi utilizada' 
-            });
+            return res.status(400).json({ success: false, error: 'Esta indicação já foi utilizada' });
         }
 
+        // 1. Marca o código como usado no banco
         await marcarComoUtilizada(codigo);
+
+        // --- INÍCIO DA NOVA LÓGICA DE RECOMPENSA ---
+        try {
+            // 2. Tenta dar a recompensa em JCoins para o usuário que indicou
+            await axios.post(`${PREMIOS_API_URL}/points/add`, {
+                userId: indicacao.id_usuario_indicador.toString(), // Converte o ID para string (ex: '1')
+                points: PONTOS_POR_INDICACAO,
+                reason: `Indicacao bem-sucedida (codigo: ${codigo})`
+            });
+            console.log(`[utilizarIndicacao] Recompensa de ${PONTOS_POR_INDICACAO} JCoins enviada para o usuário ${indicacao.id_usuario_indicador}`);
+        } catch (apiError) {
+            console.error(`[ERRO] Falha ao creditar JCoins para ${indicacao.id_usuario_indicador}. Erro: ${apiError.message}`);
+            // Não paramos a execução; o convite foi usado, mas o crédito falhou.
+        }
+        // --- FIM DA NOVA LÓGICA DE RECOMPENSA ---
 
         res.json({
             success: true,
@@ -142,10 +152,7 @@ export const utilizarIndicacao = async (req, res) => {
         });
     } catch (error) {
         console.error('Erro ao utilizar indicação:', error);
-        res.status(500).json({ 
-            success: false,
-            error: 'Erro interno do servidor' 
-        });
+        res.status(500).json({ success: false, error: 'Erro interno do servidor' });
     }
 };
 
@@ -165,10 +172,13 @@ export const listarIndicacoes = async (req, res) => {
             status: ind.expirado ? 'expirado' : ind.utilizado ? 'utilizado' : 'ativo'
         }));
 
+        const totalUtilizadas = indicacoes.filter(ind => ind.utilizado).length;
+
         res.json({
             success: true,
             data: indicacoesFormatadas,
-            total: indicacoes.length
+            total: indicacoes.length,
+            totalUtilizadas: totalUtilizadas
         });
     } catch (error) {
         console.error('Erro ao listar indicações:', error);
