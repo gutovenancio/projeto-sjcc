@@ -50,31 +50,10 @@
           <div class="mini-label">indicações</div>
         </div>
       </div>
-      <div style="padding: 10px; background: #fff8e0; border: 1px solid #e6dbb9; text-align: center; margin: 16px 0; border-radius: 8px;">
-                  <strong>Área de Teste (API de Streak):</strong>
-                  <button id="read-article-button" type="button" style="padding: 5px 10px; margin-left: 10px; cursor: pointer;">
-                      Simular Leitura de Artigo
-                  </button>
-                  <span id="status-message" style="margin-left: 10px;"></span>
-        </div>
-         <div style="padding: 10px; background: #e0f0ff; border: 1px solid #b3d4f0; text-align: center; margin: 16px 0; border-radius: 8px;">
-        <strong>Área de Teste (API de Indicação):</strong>
-        <button id="generate-invite-btn" type="button" style="padding: 5px 10px; margin: 0 10px; cursor: pointer;">
-            1. Gerar meu Link de Convite
-        </button>
-        <div id="invite-link-area" style="margin-top: 10px; display: none;">
-            <span style="font-weight: bold;">Link Gerado:</span>
-            <input type="text" id="generated-link-input" readonly style="width: 200px; padding: 4px;">
-            <button id="use-invite-btn" type="button" style="padding: 5px 10px; margin-left: 10px; cursor: pointer; background: #28a745; color: white; border: 0;">
-                2. Simular Cadastro do Amigo
-            </button>
-        </div>
-        <span id="invite-status" style="margin-left: 10px; font-size: 14px;"></span>
-        </div>
+
       <section class="level-card perfil-ativo-only" id="levelCard">
         <div class="level-header">
           <span id="levelLabel">Nível 1</span>
-          <!-- direita: pontos atuais / pontos para o próximo nível -->
           <strong class="points-strong" id="pointsRight">0 / 0 pontos</strong>
         </div>
 
@@ -83,7 +62,6 @@
             <div class="level-bar-fill" id="levelBar"></div>
           </div>
           <div class="level-legend">
-            <!-- legenda pedida no Figma fica à ESQUERDA -->
             <span class="level-hint-left" id="nextLevelHint">Chegue em 0 pontos para conseguir o próximo nível</span>
           </div>
         </div>
@@ -123,73 +101,7 @@
     <div class="panel">
       <div class="panel-header">Ofertas para você</div>
       <ul class="rewards-list" id="rewardsList">
-        <li class="reward" data-price-brl="30">
-          <div class="reward-info">
-            <img src="assets/Rewards/Smiles.png" class="reward-logo" alt="">
-            <div>
-              <h4>Milhas no Smiles</h4>
-              <p>1000 milhas para você utilizar</p>
-            </div>
-          </div>
-          <div class="reward-cta">
-            <span class="price-line">
-              <b class="jcoin-value">0</b> <span class="jcoin-label">JCoins</span>
-            </span>
-            <span class="badge status"></span>
-            <button class="redeem-btn" type="button" disabled>Resgatar</button>
-          </div>
-        </li>
-
-        <li class="reward" data-price-brl="25">
-          <div class="reward-info">
-            <img src="assets/Rewards/Caneca JC.png" class="reward-logo" alt="">
-            <div>
-              <h4>Caneca do JC</h4>
-              <p>Personalizada com o seu nome</p>
-            </div>
-          </div>
-          <div class="reward-cta">
-            <span class="price-line">
-              <b class="jcoin-value">0</b> <span class="jcoin-label">JCoins</span>
-            </span>
-            <span class="badge status"></span>
-            <button class="redeem-btn" type="button" disabled>Resgatar</button>
-          </div>
-        </li>
-
-        <li class="reward" data-price-brl="15">
-          <div class="reward-info">
-            <img src="assets/Rewards/e-book jc.png" class="reward-logo" alt="">
-            <div>
-              <h4>E-book JC</h4>
-              <p>Conteúdo exclusivo sobre economia</p>
-            </div>
-          </div>
-          <div class="reward-cta">
-            <span class="price-line">
-              <b class="jcoin-value">0</b> <span class="jcoin-label">JCoins</span>
-            </span>
-            <span class="badge status"></span>
-            <button class="redeem-btn" type="button" disabled>Resgatar</button>
-          </div>
-        </li>
-
-        <li class="reward" data-price-brl="200">
-          <div class="reward-info">
-            <img src="assets/Rewards/Netflix.png" class="reward-logo" alt="">
-            <div>
-              <h4>Voucher de R$ 200</h4>
-              <p>Vale para parceiros selecionados</p>
-            </div>
-          </div>
-          <div class="reward-cta">
-            <span class="price-line">
-              <b class="jcoin-value">0</b> <span class="jcoin-label">JCoins</span>
-            </span>
-            <span class="badge status"></span>
-            <button class="redeem-btn" type="button" disabled>Resgatar</button>
-          </div>
-        </li>
+        <li style="padding: 20px; text-align: center; color: #666;">Carregando ofertas...</li>
       </ul>
 
       <p class="more-link">
@@ -206,35 +118,7 @@
       </div>
 
       <ol class="ranking-list" id="rankingList">
-        <li>
-          <img class="rank-medal" src="assets/icons/medal-1.png" alt="">
-          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-          <span>Ana Carolina Santos</span>
-          <b>100 🔥</b>
-        </li>
-        <li>
-          <img class="rank-medal" src="assets/icons/medal-2.png" alt="">
-          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-          <span>Ricardo Mendes</span>
-          <b>89 🔥</b>
-        </li>
-        <li>
-          <img class="rank-medal" src="assets/icons/medal-3.png" alt="">
-          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-          <span>Maria Julia Costa</span>
-          <b>63 🔥</b>
-        </li>
-        <li class="me">
-          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-          <span>Lucas Oliveira</span>
-          <b>50 🔥</b>
-        </li>
-        <li>
-          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-          <span>Leila Soares</span>
-          <b>49 🔥</b>
-        </li>
-      </ol>
+         </ol>
     </div>
   </section>
 
@@ -246,11 +130,10 @@
 <script>
   // --- INÍCIO DO CÓDIGO DE INTEGRAÇÃO DA API ---
 
-// ---  CONFIGURAÇÃO ---
+  // --- 1. CONFIGURAÇÃO ---
     const USER_ID = 1; // Em um sistema real, este ID viria do sistema de login.
     const PROFILE_API_URL = 'http://localhost:4000'; // Nosso endpoint agregador!
     const POINTS_PER_BRL = 20; 
-    const PONTOS_POR_INDICACAO = 50
 
     // ---  FUNÇÕES DE LÓGICA DE CÁLCULO (Reutilizadas) ---
     function pointsForLevel(level) {
@@ -267,15 +150,10 @@
 
     // Esta função preenche os 3 cartões do topo
     function renderMetrics(data) {
-    // CORRIGIDO:
-    // 1. Os IDs corretos são 'metricNews' e 'metricStreak'.
-    // 2. A variável 'data' nesta função JÁ É o objeto 'metrics',
-    //    então acessamos 'data.newsRead' diretamente (e não 'data.metrics.newsRead').
-    
-    document.getElementById('metricNews').textContent = data.newsRead;
-    document.getElementById('metricStreak').textContent = data.streakDays;
-    document.getElementById('metricReferrals').textContent = data.referrals;
-}
+        document.getElementById('metricNews').textContent = data.newsRead;
+        document.getElementById('metricStreak').textContent = data.streakDays;
+        document.getElementById('metricReferrals').textContent = data.referrals;
+    }
 
     // Esta função preenche o painel de usuário
     function renderUserPanel(user, wallet) {
@@ -311,7 +189,6 @@
     // Esta função preenche a lista de recompensas
     function renderRewards(rewards, userPoints) {
         
-        // Guarda as recompensas globalmente para que a função de resgate possa re-renderizar
         window.cachedRewards = rewards; 
         
         const rewardsList = document.getElementById('rewardsList');
@@ -322,9 +199,28 @@
             return;
         }
 
+        //  MAPA DE IMAGENS
+        const imageMap = {
+            'Camiseta SJCC': 'assets/Rewards/Camiseta_SJCC.png', // Aponta para a nova imagem
+            'Caneca SJCC': 'assets/Rewards/Caneca JC.png',
+            'Clube de Descontos (1 mês)': 'assets/Rewards/Netflix.png' 
+        };
+        // ----------------------------------
+
         rewards.forEach(reward => {
             // Ignora recompensas inativas ou sem custo
             if (!reward.is_active || !reward.cost_points) return;
+
+            // --- 2. LÓGICA PARA MUDAR O TEXTO NA TELA ---
+            let displayTitle = reward.title;
+            let displayDescription = reward.description;
+
+            // Se o item for o "Clube de Descontos", mudamos o texto visualmente
+            if (reward.title === 'Clube de Descontos (1 mês)') {
+                displayTitle = 'Netflix';
+                displayDescription = '1 mês de assinatura';
+            }
+            // --------------------------------------------
 
             const costPts = reward.cost_points;
             const canAfford = userPoints >= costPts;
@@ -342,14 +238,16 @@
                 statusText = `Faltam ${costPts - userPoints} JCoins`;
             }
 
-            const logoUrl = `assets/Rewards/${reward.title.split(' ')[0]}.png`; // Tenta adivinhar o logo
+            // Usa o mapa para pegar a imagem correta com base no título original do banco
+            const logoUrl = imageMap[reward.title] || 'assets/icons/indicaçoes.png'; 
 
+            // Note que usamos 'displayTitle' e 'displayDescription' no HTML abaixo
             li.innerHTML = `
               <div class="reward-info">
-                <img src="${logoUrl}" class="reward-logo" alt="" style="background-color: #f0f0f0;">
+                <img src="${logoUrl}" class="reward-logo" alt="${displayTitle}" style="background-color: #fff; object-fit: contain; padding: 4px;">
                 <div>
-                  <h4>${reward.title}</h4>
-                  <p>${reward.description}</p>
+                  <h4>${displayTitle}</h4>
+                  <p>${displayDescription}</p>
                 </div>
               </div>
               <div class="reward-cta">
@@ -360,7 +258,8 @@
                 <button class="redeem-btn" type="button" ${!canAfford ? 'disabled' : ''}>Resgatar</button>
               </div>
             `;
-            // Adiciona o listener de clique no botão que acabamos de criar
+
+            // Adiciona o listener de clique no botão
             const btn = li.querySelector('.redeem-btn');
             if (canAfford) {
                 // Passa o ID real e o custo real para a função de resgate
@@ -369,8 +268,9 @@
 
             rewardsList.appendChild(li);
         });
-
     }
+
+    // --- FUNÇÃO DE INTERAÇÃO (RESGATAR RECOMPENSA - MANTIDA) ---
     async function redeemReward(rewardId, cost) {
         if (!confirm(`Resgatar este item por ${cost} JCoins?`)) {
             return; // Usuário cancelou
@@ -410,7 +310,6 @@
             renderLevelCard(result.balanceAfter);
             
             // 3. Re-desenha a lista de recompensas com o novo saldo
-            // (Isso vai desabilitar botões que o usuário não pode mais comprar)
             renderRewards(window.cachedRewards || [], result.balanceAfter);
 
         } catch (error) {
@@ -421,6 +320,7 @@
             btn.textContent = 'Resgatar';
         }
     }
+
     // Esta função preenche o ranking
     function renderRanking(rankingData, myUserId) {
         const rankingList = document.getElementById('rankingList');
@@ -442,9 +342,6 @@
             if (index < 3) {
                 posHtml = `<img class="rank-medal" src="${medalIcons[index]}" alt="Medalha">`;
             } else {
-                // Seu CSS original não tinha um estilo para a posição
-                // Vamos usar a tag <span class="pos"> que existe no HTML original (se houver)
-                // Se não, você pode adicionar este estilo: .pos-number { width: 26px; text-align: center; }
                 posHtml = `<span class="pos-number" style="width:26px; text-align:center; font-weight: 700;">${index + 1}</span>`;
             }
             
@@ -455,40 +352,6 @@
             
             rankingList.appendChild(li);
         });
-    }
-
-    // ---  FUNÇÃO DE INTERAÇÃO (CLIQUE NO BOTÃO) ---
-    async function incrementStreak() {
-        const statusEl = document.getElementById('status-message');
-        
-        // IDs CORRIGIDOS:
-        const streakEl = document.getElementById('metricStreak'); 
-        const readsEl = document.getElementById('metricNews');
-
-        statusEl.textContent = 'Registrando leitura...';
-        try {
-            // Chama DIRETAMENTE a API de Streak (porta 3000)
-            const response = await fetch(`http://localhost:3000/streak/increment`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    userId: USER_ID, // A constante USER_ID = 1 que já existe no seu script
-                    articleId: `artigo-teste-${new Date().toISOString()}`
-                }),
-            });
-            
-            const result = await response.json();
-            if (!response.ok) throw new Error(result.error);
-
-            // Atualiza os números na tela na hora!
-            streakEl.textContent = result.current_streak;
-            readsEl.textContent = result.totalReads;
-            statusEl.textContent = result.status;
-
-        } catch (error) {
-            console.error('Erro ao registrar leitura:', error);
-            statusEl.textContent = 'Não foi possível conectar à API de Streak.';
-        }
     }
     
     // ---  FUNÇÃO DE CONTROLE DE EXIBIÇÃO ---
@@ -534,98 +397,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         // 1. Carrega todos os dados do perfil assim que a página abre
         initializeProfile();
-
-        // 2. Conecta o botão de teste de STREAK
-        const readArticleButton = document.getElementById('read-article-button');
-        if (readArticleButton) {
-            readArticleButton.addEventListener('click', incrementStreak);
-        }
-
-        // 3. Conecta os botões de teste de INDICAÇÃO (O melhor lugar é aqui!)
-        const inviteButton = document.getElementById('generate-invite-btn');
-        const useButton = document.getElementById('use-invite-btn');
-        if (inviteButton) {
-            inviteButton.addEventListener('click', generateInvite);
-        }
-        if (useButton) {
-            useButton.addEventListener('click', useInvite);
-        }
     });
- // ---  FUNÇÕES DE INTERAÇÃO (GERAR E USAR CONVITE) ---
-let generatedInviteCode = null; // Guarda o código entre os cliques
 
-async function generateInvite() {
-    const btn = document.getElementById('generate-invite-btn');
-    const statusEl = document.getElementById('invite-status');
-
-    btn.disabled = true;
-    statusEl.textContent = 'Gerando...';
-
-    try {
-        const response = await fetch(`http://localhost:3002/api/invite/generate`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idUsuario: USER_ID, descricao: "Teste do Perfil" }),
-        });
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error);
-
-        generatedInviteCode = result.data.codigoUnico; // Salva o código
-
-        // Mostra a segunda etapa do teste
-        document.getElementById('invite-link-area').style.display = 'block';
-        document.getElementById('generated-link-input').value = result.data.link;
-        statusEl.textContent = 'Link gerado! Agora clique em "Simular Cadastro".';
-
-    } catch (error) {
-        console.error('Erro ao gerar convite:', error);
-        statusEl.textContent = `Erro ao gerar: ${error.message}`;
-        btn.disabled = false;
-    }
-}
-
-async function useInvite() {
-    const btn = document.getElementById('use-invite-btn');
-    const statusEl = document.getElementById('invite-status');
-
-    if (!generatedInviteCode) {
-        statusEl.textContent = 'Gere um link primeiro.';
-        return;
-    }
-
-    btn.disabled = true;
-    statusEl.textContent = 'Simulando cadastro do amigo...';
-
-    try {
-        // Chama o endpoint que MARCA O CÓDIGO COMO USADO
-        const response = await fetch(`http://localhost:3002/api/invite/use/${generatedInviteCode}`, {
-            method: 'POST'
-        });
-
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error);
-
-        statusEl.textContent = `Sucesso! Você ganhou ${PONTOS_POR_INDICACAO} JCoins! Recarregando...`;
-
-        // Espera 2 segundos para o usuário ler a mensagem
-        setTimeout(async () => {
-            // Recarrega todo o perfil
-            await initializeProfile(); 
-
-            // Reseta a simulação
-            statusEl.textContent = '';
-            document.getElementById('invite-link-area').style.display = 'none';
-            document.getElementById('generate-invite-btn').disabled = false;
-            btn.disabled = false;
-            generatedInviteCode = null;
-        }, 2000); // 2 segundos de delay
-
-    } catch (error) {
-        console.error('Erro ao usar convite:', error);
-        statusEl.textContent = `Erro ao usar: ${error.message}`;
-        btn.disabled = false;
-    }
-}
 </script>
 </body>
 </html>
