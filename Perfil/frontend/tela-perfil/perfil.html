@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil – SJCC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+  <header class="app-header" aria-label="Barra superior">
+    <div class="app-header__left"></div>
+    <img src="assets/brand/Símbolo Jc.png" alt="JC" class="app-logo" />
+    <div class="app-actions">
+      <img src="Foto de Perfil.png" alt="Avatar" class="app-avatar" id="headerAvatar" />
+      <button class="icon-btn" aria-label="Pesquisar"><img src="assets/icons/lupa.png" alt=""></button>
+      <button class="icon-btn" aria-label="Menu"><img src="assets/icons/menu.png" alt=""></button>
+    </div>
+  </header>
+
+  <section class="top-row">
+    <div class="top-left">
+      
+      <div class="top-grid">
+        <div class="mini-stat">
+          <img src="assets/icons/news.png" class="mini-icon-img" alt="">
+          <div class="mini-value" id="metricNews">-</div>
+          <div class="mini-label">notícias lidas</div>
+        </div>
+        <div class="mini-stat">
+          <img src="assets/icons/streak.png" class="mini-icon-img" alt="">
+          <div class="mini-value" id="metricStreak">-</div>
+          <div class="mini-label">dias de streak</div>
+        </div>
+        <div class="mini-stat">
+          <img src="assets/icons/indicaçoes.png" class="mini-icon-img" alt="">
+          <div class="mini-value" id="metricReferrals">-</div>
+          <div class="mini-label">indicações</div>
+        </div>
+      </div>
+
+      <button id="btnSimularLeitura" style="
+              flex: 1;
+              padding: 12px; 
+              background-color: #333; 
+              color: white; 
+              border: none; 
+              border-radius: 12px; 
+              font-weight: bold; 
+              cursor: pointer;
+              display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <i class="fa-solid fa-book-open"></i> Ler Notícia (+50 XP)
+          </button>
+
+          <button id="btnAvancarDia" style="
+              flex: 1;
+              padding: 12px; 
+              background-color: #e0e0e0; 
+              color: #333; 
+              border: 1px solid #ccc;
+              border-radius: 12px; 
+              font-weight: bold; 
+              cursor: pointer;
+              display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <i class="fa-regular fa-calendar-check"></i> Avançar Dia
+          </button>
+      <div style="display: flex; gap: 10px; margin: 15px 0;">
+      </div>
+      
+      <div id="debugDayDisplay" style="text-align: center; font-size: 12px; color: #777; margin-bottom: 10px;">
+          Dia Atual: Hoje
+      </div>
+
+      <section class="level-card perfil-ativo-only" id="levelCard">
+        <div class="level-header">
+          <span id="levelLabel">Carregando...</span>
+          <strong class="points-strong" id="pointsRight">0 / 0 pontos</strong>
+        </div>
+
+        <div class="level-progress">
+          <div class="level-bar-bg">
+            <div class="level-bar-fill" id="levelBar"></div>
+          </div>
+          
+          <div class="level-legend">
+            <span class="level-hint-left" id="nextLevelHint">...</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="user-panel perfil-ativo-only" id="userPanel">
+      <img src="Foto de Perfil.png" alt="Avatar" class="user-avatar" id="panelAvatar" />
+      <div class="user-info">
+        <strong class="user-name" id="userName">...</strong>
+        <div class="user-email" id="userEmail">...</div>
+        <div class="user-prefs" id="userPrefs"></div>
+        <div class="user-wallet">Total na carteira: <b id="walletCoins">...</b></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="content-grid">
+    <div class="left-column">
+      <div class="panel">
+        <div class="panel-header">Ofertas para você</div>
+        <ul class="rewards-list" id="rewardsList">
+          <li style="padding:20px; text-align:center;">Carregando ofertas...</li>
+        </ul>
+        <p class="more-link"><a href="#">Ver catálogo completo</a></p>
+      </div>
+    </div>
+
+    <div class="panel" id="rankingPanel">
+      <div class="panel-header">Top Ranking</div>
+      <ol class="ranking-list" id="rankingList">
+        <li style="padding:20px; text-align:center;">Carregando ranking...</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="recommendations" class="rec-section panel full-width-rec">
+    <div class="panel-header" style="background: white; color: #333; border-bottom: 2px solid #f0f0f0;">
+      <h2 style="font-size: 22px; margin:0; text-transform: uppercase; color: #B00000;">
+        <i class="fa-regular fa-newspaper"></i> Continue Lendo
+      </h2>
+    </div>
+    <ul id="rec-list" class="rec-list">
+       </ul>
+  </section>
+
+</main> 
+
+<script src="script.js"></script>
+
+</body>
+</html>
