@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recompensas - JCoins</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tipografias do Design System -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body class="page-store">
+    <div class="page">
+      <!-- BARRA SUPERIOR (logo + ícones) -->
+      <header class="topbar">
+        
+        <a href="index.html" class="icon-button back-button" title="Voltar ao Perfil">
+            <i class="fa-solid fa-arrow-left" style="font-size: 1.2rem;"></i>
+        </a>
+        <div class="topbar-logo">
+          <img src="assets/brand/Símbolo Jc.png" alt="Jornal do Commercio" />
+        </div>
+        
+        <div class="topbar-actions">
+          <button class="icon-button" type="button">
+            <img
+              src="assets/icons/avatar.png"
+              alt="Avatar do usuário"
+              class="avatar-icon"
+            />
+          </button>
+
+          <button class="icon-button" type="button">
+            <img src="assets/icons/lupa.png" alt="Buscar" />
+          </button>
+
+          <button class="icon-button" type="button">
+            <img src="assets/icons/menu.png" alt="Menu" />
+          </button>
+        </div>
+      </header>
+
+      <!-- CABEÇALHO DA PÁGINA -->
+      <section class="rewards-header">
+        <h1 class="rewards-title">RECOMPENSAS</h1>
+        <p class="rewards-subtitle">
+          Acumule JCoins e troque por benefícios exclusivos e incríveis.
+        </p>
+
+        <div class="balance-card">
+          <div class="balance-icon">
+            <img src="assets/icons/carteira.png" alt="Carteira" />
+          </div>
+
+          <div class="balance-value">
+            <span id="userCoinsValue" class="balance-number">--</span>
+            <span class="balance-label">JCoins</span>
+          </div>
+        </div>
+
+        <button id="resetCoins" class="reset-coins-btn" type="button">
+          resetar saldo (dev)
+        </button>
+
+      </section>
+
+      <main class="rewards-main">
+        <!-- MELHORES RECOMPENSAS -->
+        <section class="reward-section">
+          <h2 class="section-title section-title--red">
+            MELHORES RECOMPENSAS
+          </h2>
+
+          <div id="bestRewardsGrid" class="rewards-grid">
+            <!-- preenchido dinamicamente pelo script.js -->
+          </div>
+        </section>
+
+        <!-- TODAS AS RECOMPENSAS -->
+        <section class="reward-section">
+          <h2 class="section-title section-title--red">
+            TODAS AS RECOMPENSAS
+          </h2>
+
+          <div id="allRewardsGrid" class="rewards-grid">
+            <!-- preenchido dinamicamente pelo script.js -->
+          </div>
+
+          <div class="toggle-wrapper">
+            <button id="toggleRewards" class="toggle-button" type="button">
+              Ver mais
+            </button>
+          </div>
+        </section>
+      </main>
+    </div><script src="recompensas.js" defer></script>
+  </body>
+</html>

@@ -8,25 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <main class="container">
-  <header class="app-header" aria-label="Barra superior">
+  <header class="app-header">
     <div class="app-header__left"></div>
-
     <img src="assets/brand/Símbolo Jc.png" alt="JC" class="app-logo" />
-
     <div class="app-actions">
-      <img src="Foto de Perfil.png" alt="Avatar" class="app-avatar" />
-      <button class="icon-btn" aria-label="Pesquisar">
-        <img src="assets/icons/lupa.png" alt="">
-      </button>
-      <button class="icon-btn" aria-label="Menu">
-        <img src="assets/icons/menu.png" alt="">
-      </button>
+      <img src="assets/icons/avatar.png" alt="Avatar" class="app-avatar" id="headerAvatar" />
+      <button class="icon-btn"><img src="assets/icons/lupa.png" alt="Pesquisar"></button>
+      <button class="icon-btn"><img src="assets/icons/menu.png" alt="Menu"></button>
     </div>
   </header>
 
@@ -35,333 +30,85 @@
       <div class="top-grid">
         <div class="mini-stat">
           <img src="assets/icons/news.png" class="mini-icon-img" alt="">
-          <div class="mini-value" id="metricNews">0</div>
+          <div class="mini-value" id="metricNews">-</div>
           <div class="mini-label">notícias lidas</div>
         </div>
         <div class="mini-stat">
           <img src="assets/icons/streak.png" class="mini-icon-img" alt="">
-          <div class="mini-value" id="metricStreak">0</div>
+          <div class="mini-value" id="metricStreak">-</div>
           <div class="mini-label">dias de streak</div>
         </div>
-        
         <div class="mini-stat">
           <img src="assets/icons/indicaçoes.png" class="mini-icon-img" alt="">
-          <div class="mini-value" id="metricReferrals">0</div>
+          <div class="mini-value" id="metricReferrals">-</div>
           <div class="mini-label">indicações</div>
         </div>
       </div>
 
-      <section class="level-card perfil-ativo-only" id="levelCard">
+      <div style="display: flex; gap: 10px; margin: 15px 0;">
+          <button id="btnSimularLeitura" style="flex: 1; padding: 12px; background:#333; color:white; border:none; border-radius:12px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+              <i class="fa-solid fa-book-open"></i> Ler (+50 XP)
+          </button>
+          <button id="btnAvancarDia" style="flex: 1; padding: 12px; background:#e0e0e0; color:#333; border:1px solid #ccc; border-radius:12px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+              <i class="fa-regular fa-calendar-check"></i> Dia Seguinte
+          </button>
+      </div>
+
+      <section class="level-card" id="levelCard">
         <div class="level-header">
-          <span id="levelLabel">Nível 1</span>
+          <span id="levelLabel">Carregando...</span>
           <strong class="points-strong" id="pointsRight">0 / 0 pontos</strong>
         </div>
-
         <div class="level-progress">
-          <div class="level-bar-bg">
-            <div class="level-bar-fill" id="levelBar"></div>
-          </div>
+          <div class="level-bar-bg"><div class="level-bar-fill" id="levelBar"></div></div>
           <div class="level-legend">
-            <span class="level-hint-left" id="nextLevelHint">Chegue em 0 pontos para conseguir o próximo nível</span>
+            <span class="level-hint-left" id="nextLevelHint">...</span>
           </div>
-        </div>
-       
-      </section>
-
-      <section class="perfil-inativo" id="perfilInativoCard" style="display:none;">
-        <div class="intro-title">Comece sua jornada de leitura</div>
-        <p class="intro-text">Ative sua participação para acumular pontos e desbloquear recompensas.</p>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text">Clique em <b>Participar</b>.</div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text">Leia notícias diariamente.</div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text">Mantenha sua <b>streak</b> ativa.</div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-text">Indique amigos e ganhe JCoins.</div></div>
-          <div class="step"><div class="step-num">5</div><div class="step-text">Resgate recompensas.</div></div>
-        </div>
-        <div class="cta-center">
-          <button class="btn-primary" type="button">Participar</button>
         </div>
       </section>
     </div>
 
-    <aside class="user-panel perfil-ativo-only" id="userPanel">
-      <img src="Foto de Perfil.png" alt="Avatar" class="user-avatar" />
+    <aside class="user-panel" id="userPanel">
+      <img src="assets/icons/avatar.png" alt="Avatar" class="user-avatar" id="panelAvatar" />
       <div class="user-info">
-        <strong class="user-name" id="userName">Lucas Oliveira</strong>
-        <div class="user-email" id="userEmail">lucasoliveira@email.com</div>
-        <div class="user-prefs" id="userPrefs">
-          <span class="chip">Política</span><span class="chip">Economia</span><span class="chip">Ciência</span>
-        </div>
-        <div class="user-wallet">Total na carteira: <b id="walletCoins">0 jcoins</b></div>
+        <strong class="user-name" id="userName">...</strong>
+        <div class="user-email" id="userEmail">...</div>
+        <div class="user-prefs" id="userPrefs"></div>
+        <div class="user-wallet">Total na carteira: <b id="walletCoins">...</b></div>
       </div>
     </aside>
   </section>
 
   <section class="content-grid">
-    <div class="panel">
-      <div class="panel-header">Ofertas para você</div>
-      <ul class="rewards-list" id="rewardsList">
-        <li style="padding: 20px; text-align: center; color: #666;">Carregando ofertas...</li>
-      </ul>
-
-      <p class="more-link">
-        <a href="#">Ver outras recompensas</a>
-      </p>
+    <div class="left-column">
+      <div class="panel">
+        <div class="panel-header">Ofertas para você</div>
+        <ul class="rewards-list" id="rewardsList">
+          <li style="padding:20px; text-align:center;">Carregando ofertas...</li>
+        </ul>
+        <p class="more-link"><a href="recompensas.html">Ver catálogo completo</a></p>
+      </div>
     </div>
 
     <div class="panel" id="rankingPanel">
       <div class="panel-header">Top Ranking</div>
-
-      <div class="ranking-empty" id="rankingEmpty" style="display:none;">
-        <p>Entre para ver o ranking completo e competir por posições.</p>
-        <button class="btn-primary" type="button">Entrar</button>
-      </div>
-
       <ol class="ranking-list" id="rankingList">
-         </ol>
+        <li style="padding:20px; text-align:center;">Carregando ranking...</li>
+      </ol>
     </div>
   </section>
 
-  <footer class="history-footer">
-    <button class="history-pill" type="button">VER HISTÓRICO</button>
-  </footer>
-</main>
+  <section class="rec-section panel">
+    <div class="rec-header-custom">
+      <h2><i class="fa-regular fa-newspaper"></i> Continue Lendo</h2>
+    </div>
+    <ul id="rec-list" class="rec-list">
+       </ul>
+  </section>
 
-<script>
-  // --- MOCK DATA: DADOS SIMULADOS PARA GITHUB PAGES ---
-  // Como o GitHub Pages é estático, usamos este objeto para fingir que o banco de dados respondeu.
-  const mockData = {
-    user: {
-      id: 1,
-      name: "Lucas Oliveira",
-      email: "lucasoliveira@email.com",
-      prefs: ["Política", "Economia", "Ciência"]
-    },
-    metrics: {
-      newsRead: 230,
-      streakDays: 15,
-      referrals: 5
-    },
-    leveling: {
-      userPoints: 1250 // Saldo inicial simulado
-    },
-    rewards: {
-      available: [
-        { 
-          id: 1, 
-          title: "Camiseta SJCC", 
-          description: "Tamanho P/M/G", 
-          cost_points: 500, 
-          is_active: 1, 
-          stock: 10 
-        },
-        { 
-          id: 2, 
-          title: "Caneca SJCC", 
-          description: "Cerâmica 300ml", 
-          cost_points: 300, 
-          is_active: 1, 
-          stock: 25 
-        },
-        { 
-          id: 3, 
-          title: "Clube de Descontos (1 mês)", 
-          description: "Assinatura mensal", 
-          cost_points: 800, 
-          is_active: 1, 
-          stock: null 
-        }
-      ]
-    },
-    ranking: [
-      { id: 2, name: "Fernanda", score: 2300 },
-      { id: 3, name: "Mário", score: 2100 },
-      { id: 4, name: "Laura", score: 1950 },
-      { id: 1, name: "Lucas Oliveira (Você)", score: 1250 }, // Você aqui
-      { id: 5, name: "Pedro", score: 1100 }
-    ]
-  };
+</main> 
+</html>
 
-  // --- FUNÇÕES DE LÓGICA (Matemática de Níveis) ---
-  function pointsForLevel(level) {
-      if (level <= 1) return 0;
-      return 50 * Math.pow(2, level - 2);
-  }
-  function calculateLevel(totalPoints) {
-      let level = 1;
-      while (totalPoints >= pointsForLevel(level + 1)) level++;
-      return level;
-  }
-
-  // --- FUNÇÕES DE RENDERIZAÇÃO (Preencher a tela) ---
-  function renderMetrics(data) {
-      document.getElementById('metricNews').textContent = data.newsRead;
-      document.getElementById('metricStreak').textContent = data.streakDays;
-      document.getElementById('metricReferrals').textContent = data.referrals;
-  }
-
-  function renderUserPanel(user, wallet) {
-      document.getElementById('userName').textContent = user.name;
-      document.getElementById('userEmail').textContent = user.email;
-      document.getElementById('walletCoins').textContent = `${wallet.toLocaleString('pt-BR')} jcoins`;
-      
-      const prefsContainer = document.getElementById('userPrefs');
-      prefsContainer.innerHTML = ''; 
-      user.prefs.forEach(pref => {
-          const span = document.createElement('span');
-          span.className = 'chip'; 
-          span.textContent = pref;
-          prefsContainer.appendChild(span);
-      });
-  }
-
-  function renderLevelCard(userPoints) {
-      const userLevel = calculateLevel(userPoints);
-      const prevReq = pointsForLevel(userLevel);
-      const nextReq = pointsForLevel(userLevel + 1);
-      const currInLv = userPoints - prevReq;
-      const gapLv = Math.max(1, nextReq - prevReq);
-      const pct = Math.max(0, Math.min(100, Math.round((currInLv / gapLv) * 100)));
-
-      document.getElementById('pointsRight').textContent = `${userPoints.toLocaleString('pt-BR')} / ${nextReq.toLocaleString('pt-BR')} pontos`;
-      document.getElementById('levelLabel').textContent = `Nível ${userLevel}`;
-      document.getElementById('levelBar').style.width = pct + '%';
-      document.getElementById('nextLevelHint').textContent = `Chegue em ${nextReq.toLocaleString('pt-BR')} pontos para conseguir o próximo nível`;
-  }
-
-  function renderRewards(rewards, userPoints) {
-      const rewardsList = document.getElementById('rewardsList');
-      rewardsList.innerHTML = ''; 
-
-      if (!rewards || rewards.length === 0) {
-          rewardsList.innerHTML = '<li>Nenhuma recompensa disponível no momento.</li>';
-          return;
-      }
-
-      const imageMap = {
-          'Camiseta SJCC': 'assets/Rewards/Camiseta_SJCC.png',
-          'Caneca SJCC': 'assets/Rewards/Caneca JC.png',
-          'Clube de Descontos (1 mês)': 'assets/Rewards/Netflix.png' 
-      };
-
-      rewards.forEach(reward => {
-          let displayTitle = reward.title;
-          let displayDescription = reward.description;
-
-          if (reward.title === 'Clube de Descontos (1 mês)') {
-              displayTitle = 'Netflix';
-              displayDescription = '1 mês de assinatura';
-          }
-
-          const costPts = reward.cost_points;
-          const canAfford = userPoints >= costPts;
-
-          const li = document.createElement('li');
-          li.className = 'reward';
-          li.classList.toggle('can-redeem', canAfford);
-          li.classList.toggle('locked', !canAfford);
-
-          let statusText = '';
-          if (canAfford) {
-              statusText = (reward.stock !== null) ? `${reward.stock} em estoque` : 'Disponível';
-          } else {
-              statusText = `Faltam ${costPts - userPoints} JCoins`;
-          }
-
-          const logoUrl = imageMap[reward.title] || 'assets/icons/indicaçoes.png'; 
-
-          li.innerHTML = `
-            <div class="reward-info">
-              <img src="${logoUrl}" class="reward-logo" alt="${displayTitle}" style="background-color: #fff; object-fit: contain; padding: 4px;">
-              <div>
-                <h4>${displayTitle}</h4>
-                <p>${displayDescription}</p>
-              </div>
-            </div>
-            <div class="reward-cta">
-              <span class="price-line">
-                <b class="jcoin-value">${costPts}</b> <span class="jcoin-label">JCoins</span>
-              </span>
-              <span class="badge status">${statusText}</span>
-              <button class="redeem-btn" type="button" ${!canAfford ? 'disabled' : ''}>Resgatar</button>
-            </div>
-          `;
-
-          const btn = li.querySelector('.redeem-btn');
-          if (canAfford) {
-              // Simulação de clique
-              btn.onclick = () => redeemRewardSimulated(reward.id, costPts, displayTitle);
-          }
-
-          rewardsList.appendChild(li);
-      });
-  }
-
-  function renderRanking(rankingData, myUserId) {
-      const rankingList = document.getElementById('rankingList');
-      rankingList.innerHTML = ''; 
-      
-      const medalIcons = [
-          'assets/icons/medal-1.png',
-          'assets/icons/medal-2.png',
-          'assets/icons/medal-3.png'
-      ];
-
-      rankingData.forEach((player, index) => {
-          const li = document.createElement('li');
-          if (player.id === myUserId) {
-              li.className = 'me';
-          }
-          
-          let posHtml = '';
-          if (index < 3) {
-              posHtml = `<img class="rank-medal" src="${medalIcons[index]}" alt="Medalha">`;
-          } else {
-              posHtml = `<span class="pos-number" style="width:26px; text-align:center; font-weight: 700;">${index + 1}</span>`;
-          }
-          
-          li.innerHTML = `${posHtml}
-                          <img class="rank-photo" src="Foto de Perfil.png" alt="">
-                          <span>${player.name}</span>
-                          <b>${player.score} 🔥</b>`;
-          
-          rankingList.appendChild(li);
-      });
-  }
-
-  // --- FUNÇÃO DE SIMULAÇÃO DE RESGATE (SEM BACKEND) ---
-  function redeemRewardSimulated(rewardId, cost, title) {
-      if (!confirm(`Confirma o resgate de "${title}" por ${cost} JCoins?`)) {
-          return; 
-      }
-
-      // Subtrai pontos do objeto mockado localmente
-      mockData.leveling.userPoints -= cost;
-
-      alert(`Sucesso! Você resgatou: ${title}.\nSeu novo saldo é: ${mockData.leveling.userPoints}`);
-
-      // Atualiza a tela com o novo saldo
-      renderUserPanel(mockData.user, mockData.leveling.userPoints);
-      renderLevelCard(mockData.leveling.userPoints);
-      renderRewards(mockData.rewards.available, mockData.leveling.userPoints);
-  }
-
-  // --- INICIALIZAÇÃO ---
-  document.addEventListener('DOMContentLoaded', () => {
-      // Carrega os dados do objeto mockData
-      renderMetrics(mockData.metrics);
-      renderUserPanel(mockData.user, mockData.leveling.userPoints);
-      renderLevelCard(mockData.leveling.userPoints);
-      renderRewards(mockData.rewards.available, mockData.leveling.userPoints);
-      renderRanking(mockData.ranking, mockData.user.id);
-
-      // Exibe o painel
-      document.getElementById('userPanel').style.display = '';
-      document.getElementById('rankingList').style.display  = '';
-      document.getElementById('rankingEmpty').style.display = 'none';
-      document.getElementById('levelCard').style.display = '';
-      document.getElementById('perfilInativoCard').style.display = 'none';
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
